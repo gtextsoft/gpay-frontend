@@ -460,7 +460,7 @@ const validationSchema = Yup.object().shape({
                         style={{ color: "red" }}
                       />
                     </div>
-                  )}
+                  )} 
 
                   {values.sendType === "other-bank" && (
                     <>
