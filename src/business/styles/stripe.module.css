@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+  }
+
+.key {
+  width: 100%;
+  margin: 1rem auto;
+  color: white;
+  background-color: rgb(127, 29, 29);
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.emme {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.laut {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+  width: 45%;
+}
+
+.lautnt {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+  width: 100%;
+}
+
+.ail {
+  border: 0.1rem solid black;
+  outline: none;
+  padding: 1rem 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+    .laut{
+        width: 100%;
+    }
+
+    .emme {
+        flex-direction: column;
+      }
+}
+
+

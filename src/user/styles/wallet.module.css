@@ -1,0 +1,213 @@
+.theWallet {
+  width: 100%;
+}
+
+.wallets {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  backdrop-filter: blur(13.955223083496094px); /* Applies the blur effect */
+  border: 0.28px solid;
+  border-image-source: radial-gradient(
+      98.69% 252.66% at 100% 100%,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.27), rgba(255, 255, 255, 0.27)); /* Gradient borders */
+  border-image-slice: 1; /* Ensures the border gradient is applied correctly */
+  background: linear-gradient(
+    132.33deg,
+    rgba(0, 0, 0, 0.92) -0.67%,
+    #6e0000 90.67%
+  ); /* Background gradient */
+  padding: 1rem; /* Optional: Adds padding for content inside the div */
+  border-radius: 10px; /* Optional: Rounds corners of the div */
+  /* width: fit-content;  */
+  /* width: 33%; */
+
+  width: 100%;
+  color: white; /* Ensures text inside the div is visible */
+}
+
+.wallets2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  backdrop-filter: blur(13.96px); /* Applies the blur effect */
+  -webkit-backdrop-filter: blur(13.96px); /* Safari support */
+
+  border: 0.28px solid;
+  border-image-source: radial-gradient(
+      98.69% 252.66% at 100% 100%,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.27), rgba(255, 255, 255, 0.27));
+  border-image-slice: 1;
+
+  background: linear-gradient(
+    132.33deg,
+    rgba(0, 0, 0, 0.92) -0.67%,
+    #42e26f 90.67%
+  ); /* Green gradient */
+
+  border-radius: 0.4rem;
+  width: 100%;
+  color: white;
+}
+
+.wallets3 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+
+  backdrop-filter: blur(13.96px); /* Applies the blur effect */
+  -webkit-backdrop-filter: blur(13.96px); /* Safari support */
+
+  border: 0.28px solid;
+  border-image-source: radial-gradient(
+      98.69% 252.66% at 100% 100%,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.27), rgba(255, 255, 255, 0.27));
+  border-image-slice: 1;
+
+  background: linear-gradient(
+    132.33deg,
+    rgba(0, 0, 0, 0.92) -0.67%,
+    #03045e 90.67%
+  ); /* Deep navy blue gradient */
+
+  border-radius: 0.4rem;
+  width: 100%;
+  color: white;
+}
+
+.wallets4 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+
+  backdrop-filter: blur(13.96px); /* Applies blur effect */
+  -webkit-backdrop-filter: blur(13.96px); /* Safari support */
+
+  border: 0.28px solid;
+  border-image-source: radial-gradient(
+      98.69% 252.66% at 100% 100%,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.27), rgba(255, 255, 255, 0.27));
+  border-image-slice: 1;
+
+  background: linear-gradient(
+    132.33deg,
+    rgba(0, 0, 0, 0.92) -0.67%,
+    #8d731d 90.67%
+  ); /* Golden brown gradient */
+
+  border-radius: 0.4rem;
+  width: 100%;
+  color: white;
+}
+
+.naira {
+  text-align: right;
+}
+
+.pho {
+  width: 15%;
+}
+
+.chipNum {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.amount {
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.transact {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon1 {
+  background-color: #ffd9a5;
+  color: #461404;
+  padding: 0.7rem 2rem;
+  border-radius: 0.5rem;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon2 {
+  background-color: #d5efff;
+  color: #0a215c;
+  padding: 0.7rem 2rem;
+  border-radius: 0.5rem;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon3 {
+  background-color: #d7d5ff;
+  color: #0a0745;
+  padding: 0.7rem 2rem;
+  border-radius: 0.5rem;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon4 {
+  background-color: #cff7d3;
+  color: #02542d;
+  padding: 0.7rem 2rem;
+  border-radius: 0.5rem;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon5 {
+  background-color: #ffffb8;
+  color: #434305;
+  padding: 0.7rem 2rem;
+  border-radius: 0.5rem;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* .nairaWallet {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img {
+  width: 10%;
+}
+
+.number {
+  font-size: 1.1rem;
+} */

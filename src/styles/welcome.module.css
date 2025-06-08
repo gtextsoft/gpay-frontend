@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.register {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  /* border: .1rem solid black; */
+}
+
+.left {
+  width: 50%;
+  /* border: .1rem solid black; */
+}
+
+.right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 8rem auto 2rem auto;
+  /* border: .1rem solid black; */
+  align-items: center;
+}
+
+.up {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  width: 70%;
+}
+
+.account {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.link {
+  color: white;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  border: 0.1rem solid black;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #033349;
+  justify-content: center;
+}
+
+.linkInd {
+  color: white;
+}
+
+.linkInd:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.linkBus {
+  color: #033349;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  border: 0.1rem solid #033349;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  justify-content: center;
+}
+
+.linkBusi {
+  color: #033349;
+}
+
+.linkBusi:hover {
+  color: #033349;
+  text-decoration: underline;
+}
+
+.hri {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.hri hr {
+  width: 30%;
+}
+
+.hri p {
+  font-size: 0.9rem;
+}
+
+.logi {
+  font-size: 0.9rem;
+}
+
+.in {
+  color: black;
+}
+
+.in:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.copy{
+    display: flex;
+    gap: .5rem;
+}
+
+.pay{
+    color: #A0AEC0;
+    font-size: .7rem;
+}
+
+.term{
+    color: #033349;
+    font-size: .7rem;
+}
+
+.term:hover{
+    color: #033349;
+    text-decoration: underline;
+}

@@ -1,0 +1,138 @@
+.sendModalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: auto; 
+  }
+  
+  .sendModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 400px;
+    text-align: center;
+    max-height: 90vh; 
+    overflow-y: auto;
+    /* border: .1rem solid black; */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+  }
+
+  .sendModal::-webkit-scrollbar {
+    display: none; 
+  }
+
+  .walletAddress {
+    background-color: #f3f3f3;
+    padding: 10px;
+    /* margin-bottom: 6px; */
+    font-family: monospace;
+    word-break: break-all;
+    border-radius: 8px;
+  }
+  
+  .nextBtn, .closeBtn {
+    cursor: pointer;
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    background: #007bff;
+    /* background: #ccc; */
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+  }
+
+  .nextBtn, .closBtn:hover {
+    background-color: #0056b3;
+  }
+
+  .action {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    /* border: 0.1rem solid black; */
+  }
+
+  .textInputs {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .label {
+    font-size: 0.9rem;
+  }
+
+  .inputP {
+    border: 0.1rem solid #e9eaec;
+    border-radius: 0.6rem;
+    padding: 0 1rem;
+    width: 100%;
+  }
+
+  .input {
+    border: 0.1rem solid #e9eaec;
+    border-radius: 0.6rem;
+    border: 0.1rem solid #e9eaec;
+    border-radius: 0.6rem;
+    background-color: white;
+    width: 100%;
+    padding: 1rem;
+    color: black;
+  }
+
+  .step2{
+    display: flex;
+    flex-direction: column;
+    /* align-items: start; */
+    gap: .5rem;
+
+  }
+
+  .start{
+    text-align: left;
+    font-size: 1.2rem;
+  }
+
+  .slease{
+    text-align: left;
+    font-size: .9rem;
+  }
+
+  .reci{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* .close-btn {
+    background: #ccc;
+    margin-left: 1rem;
+  } */
+
+ /* .close-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 16px;
+  } */
+
+
+  
+  

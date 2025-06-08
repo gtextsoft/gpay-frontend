@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem 0;
+  outline: none;
+  border: none;
+  color: black;
+  background-color: white;
+}
+
+.textInputs {
+  display: flex;
+  /* color: black; */
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  border: 0.1rem solid black;
+}
+
+@media (max-width: 1024px) {
+  .dashboardLogin {
+    flex-direction: column;
+    height: auto; /* Adjusts height for medium screens */
+  }
+
+  .settings,
+  .loginImage {
+    width: 80%; /* Centers the content for medium screens */
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    min-height: 100vh;
+    padding: 1rem; /* Adds padding for smaller screens */
+  }
+
+  .dashboardLogin {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .loginImage,
+  .settings {
+    width: 100%;
+  }
+
+  .settings {
+    padding: 2rem; /* Reduces padding for smaller screens */
+  }
+
+  .button {
+    width: 80%; /* Expands button for smaller screens */
+    padding: 0.6rem;
+  }
+
+  .logoHead img {
+    width: 100px; /* Smaller logo on mobile */
+  }
+
+  .logoHead h1 {
+    font-size: 18px; /* Slightly smaller text */
+  }
+
+  .btnFeedback {
+    width: 50%; /* Wider button on tablet */
+  }
+}
+
+@media (max-width: 480px) {
+  .settings {
+    padding: 1rem;
+  }
+
+  .button {
+    width: 100%; /* Full-width button on mobile */
+    padding: 0.5rem;
+  }
+
+  .textInputs,
+  .login {
+    gap: 1rem; /* Reduces gap for smaller screens */
+  }
+
+  .logoHead {
+    padding: 10px; /* Reduced padding for mobile */
+  }
+
+  .btnFeedback {
+    width: 80%; /* Almost full width button on mobile */
+    padding: 1rem;
+  }
+
+  .logoHead img {
+    width: 80px; /* Even smaller logo on very small screens */
+  }
+
+  .logoHead h1 {
+    font-size: 16px; /* Adjust text size further for mobile */
+  }
+}
