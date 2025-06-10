@@ -51,7 +51,10 @@ export const BusKYCProvider = ({ children }) => {
 
         const res = await fetch(`${API_BASE_URL}/api/kyc/bus/status`, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("userAuthToken")}`,
+            // Authorization: `Bearer ${localStorage.getItem("userAuthToken")}`,
+            Authorization: `Bearer ${ 
+              localStorage.getItem("userAuthToken") || // individual
+              localStorage.getItem("businessAuthToken")}`,
           },
         });
 

@@ -11,10 +11,12 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import style from "../styles/Register.module.css";
+import { LOCAL_KEYS } from "../storage/storageKeys";
 
 function Login() {
-  const { setUsername, setUserId} = useUser(); // Access UserContext
+  const { setUsername, setUserId } = useUser(); // Access UserContext
   const [showPassword, setShowPassword] = useState(false); // Password visibility toggle
+
   const navigate = useNavigate();
 
   // Validation schema for Formik
@@ -32,34 +34,59 @@ function Login() {
       const { userData, authToken: token } = response.data;
       if (token && userData?.role && (userData.busName || userData.username)) {
         // Choose the right name based on role
+        const role = userData.role; // "individual" or "business"
+        const keys = LOCAL_KEYS[role];
+
+        // if (role === "individual") {
+        //   navigate("/user/dashboard-individual");
+        // } else if (role === "business") {
+        //   navigate("/user/business-dashboard");
+        // } else {
+        //   toast.error("Invalid user role. Please contact support.");
+        // }
+
         const nameToUse =
           userData.role === "business" ? userData.busName : userData.username;
-      
+
         // Save to localStorage
-        localStorage.setItem("userAuthToken", token);
-        localStorage.setItem("userUsername", nameToUse);
-        localStorage.setItem("userRole", userData.role);
-        localStorage.setItem("userId", userData._id);
+
+        localStorage.setItem(keys.username, nameToUse);
+        localStorage.setItem(keys.authToken, token);
+        localStorage.setItem(keys.userId, userData._id);
+        localStorage.setItem(LOCAL_KEYS.shared.role, role);
 
         // Update context
         setUsername(nameToUse);
         setUserId(userData._id);
-      
+
         toast.success("Login successful!", { autoClose: 2000 });
-      
+        console.log("Logged in userData:", userData);
+
         // Redirect by role
+        // Delay redirect to ensure context + localStorage update
         setTimeout(() => {
-          if (userData.role === "individual") {
+          if (role === "individual") {
             navigate("/user/dashboard-individual");
-          } else if (userData.role === "business") {
+          } else if (role === "business") {
             navigate("/user/business-dashboard");
           } else {
-            navigate("/user/dashboard"); // fallback
+            navigate("/user/dashboard");
           }
         }, 2000);
+
+        // setTimeout(() => {
+        //   if (userData.role === "individual") {
+        //     navigate("/user/dashboard-individual");
+        //   } else if (userData.role === "business") {
+        //     navigate("/user/business-dashboard");
+        //   } else {
+        //     navigate("/user/dashboard"); // fallback
+        //   }
+        // }, 2000);
       } else {
+        toast.error("Unknown user role. Please contact support.");
         throw new Error("Invalid response from server");
-      }     
+      }
       // if (token && userData?.busName && userData?.role) {
       //   // Save to localStorage
       //   localStorage.setItem("userAuthToken", token);
@@ -190,7 +217,7 @@ function Login() {
                   <button
                     type="submit"
                     className={style.investConsult3}
-                    aria-label="Login"
+                    ariaLabel="Login"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (

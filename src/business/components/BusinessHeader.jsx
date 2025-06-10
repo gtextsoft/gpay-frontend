@@ -9,7 +9,7 @@ import { useContext, useState, useEffect } from "react";
 
 function BusinessHeader() {
   const context = useUser() || {};
-  
+
   const { username, setUsername } = context;
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -26,53 +26,6 @@ function BusinessHeader() {
     navigate(-1); // This takes the user to the previous page
   };
 
-  // useEffect(() => {
-  //   const markNotificationsRead = async () => {
-  //     try {
-  //       const token = localStorage.getItem("userAuthToken");
-  //       // const currentIdentifier = localStorage.getItem("userUsername");
-  //       const currentIdentifier = username || localStorage.getItem("userUsername"); // This should hold either username or busName
-
-
-  //       await axios.put(
-  //         `${import.meta.env.VITE_API_BASE_URL}/api/notification/${currentIdentifier}/mark-read`,
-  //         {},
-  //         { headers: { Authorization: `Bearer ${token}` } }
-  //       );
-  //     } catch (error) {
-  //       console.error("Failed to mark notifications as read:", error);
-  //     }
-  //   };
-
-  //   markNotificationsRead();
-  // }, []);
-
-  // const fetchNotifications = async () => {
-  //   try {
-  //     const token = localStorage.getItem("userAuthToken");
-  //     const currentIdentifier = username || localStorage.getItem("userUsername");
-
-  //     const response = await axios.get(
-  //       `${import.meta.env.VITE_API_BASE_URL}/api/notification/${currentIdentifier}`,
-  //       {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       }
-  //     );
-
-  //     const hasUnread = response.data.notifications.some(
-  //       (notification) => !notification.read
-  //     );
-
-  //     setHasNotifications(hasUnread); // ✅ Correct logic
-  //   } catch (error) {
-  //     console.error("Error fetching notifications:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchNotifications();
-  // }, [username]);
-
   useEffect(() => {
     const storedProfileImage = localStorage.getItem("profileImage");
     if (storedProfileImage) {
@@ -83,8 +36,11 @@ function BusinessHeader() {
       setLoading(true);
       try {
         // let currentIdentifier = username || localStorage.getItem("userUsername");
-        const currentIdentifier = username || localStorage.getItem("userUsername"); // This should hold either username or busName
-
+        // const currentIdentifier = username || localStorage.getItem("userUsername"); // This should hold either username or busName
+        const currentIdentifier =
+          username ||
+          localStorage.getItem("userUsername") || // individual
+          localStorage.getItem("busUsername"); // ✅ add this
 
         if (!currentIdentifier) {
           toast.error("Username is not available. Redirecting to login...");
@@ -92,7 +48,12 @@ function BusinessHeader() {
           return;
         }
 
-        const token = localStorage.getItem("userAuthToken");
+        // const token = localStorage.getItem("userAuthToken");
+
+        const token =
+          localStorage.getItem("userAuthToken") || // individual
+          localStorage.getItem("businessAuthToken");
+
         if (!token) {
           toast.error("Unauthorized access. Please log in.");
           navigate("/login");

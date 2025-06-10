@@ -71,6 +71,11 @@ function Pages() {
             path="/user/dashboard-individual"
             element={<UserDashboard />}
           />
+
+          <Route
+            path="/user/dashboard"
+            element={<UserDashboard />}
+          />
           <Route path="/user/wallet" element={<UserWallet />} />
           <Route path="/user/fund-transfer" element={<UserFund />} />
           <Route path="/user/savings" element={<UserSavings />} />

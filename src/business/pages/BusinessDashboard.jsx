@@ -4,7 +4,7 @@ import style from "../styles/userdashboard.module.css";
 
 import SideBar from "../components/UserSideBar";
 import UserHeader from "../components/BusinessHeader";
-
+import { useUser } from "../../context/UserContext";
 import BusWelcome from "../components/BusWelcome";
 import BusIndIdentify from "../components/BusIndIdentify";
 import BusIndIdentify2 from "../components/BusIndIdentify2";
@@ -26,6 +26,16 @@ import ReceiveModal from "../components/ReceiveModal";
 import SwapModal from "../components/SwapModal";
 
 function BusinessDashboard() {
+  const { username, userId } = useUser();
+
+  useEffect(() => {
+    console.log("BusinessDashboard mounted");
+    console.log("Context username:", username);
+    console.log("Context userId:", userId);
+    console.log("localStorage role:", localStorage.getItem("userRole"));
+    console.log("localStorage token:", localStorage.getItem("businessAuthToken"));
+  }, []);
+  
   const { kycStatus, currentStep, kycRejectionReason, startKyc, isKycLoading } =
     useBusKYC();
 

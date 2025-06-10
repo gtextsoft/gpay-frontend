@@ -44,13 +44,19 @@ function BusinessSetting() {
 
   const handleSubmit = async () => {
     try {
-      const currentUsername = localStorage.getItem("userUsername");
+      // const currentUsername = localStorage.getItem("userUsername");
+      const currentUsername =
+      localStorage.getItem("userUsername") || // individual
+      localStorage.getItem("busUsername");
       if (!currentUsername) {
         toast.error("Username is not available. Please log in again.");
         return;
       }
 
-      const token = localStorage.getItem("userAuthToken");
+      // const token = localStorage.getItem("userAuthToken");
+      const token =
+      localStorage.getItem("userAuthToken") || // individual
+      localStorage.getItem("businessAuthToken");
       if (!token) {
         toast.error("Unauthorized access. Please log in.");
         return;
@@ -103,13 +109,20 @@ function BusinessSetting() {
 
   useEffect(() => {
     const fetchUserProfile = async () => {
-      const currentUsername = localStorage.getItem("userUsername");
+      // const currentUsername = localStorage.getItem("userUsername");
+      const currentUsername =
+          username ||
+          localStorage.getItem("userUsername") || // individual
+          localStorage.getItem("busUsername"); 
       if (!currentUsername) {
         toast.error("User not found. Please log in.");
         return;
       }
 
-      const token = localStorage.getItem("userAuthToken");
+      // const token = localStorage.getItem("userAuthToken");
+      const token =
+      localStorage.getItem("userAuthToken") || // individual
+      localStorage.getItem("businessAuthToken");
       console.log("Retrieved Token:", token); // Debugging
 
       if (!token) {

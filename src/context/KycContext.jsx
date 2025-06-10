@@ -54,7 +54,9 @@ export const KYCProvider = ({ children }) => {
 
         const res = await fetch(`${API_BASE_URL}/api/kyc/status`, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("userAuthToken")}`,
+            Authorization: `Bearer ${ 
+              localStorage.getItem("userAuthToken") || // individual
+              localStorage.getItem("businessAuthToken")}`,
           },
         });
 
