@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import SideBar from "../components/UserSideBar";
-import UserHeader from "../components/UserHeader";
+import UserHeader from "../components/BusinessHeader";
 import style from "../styles/usernotification.module.css";
-import Setting from "../components/Setting";
+import Setting from "../components/BusinessSetting";
 
-function UserSetting() {
-  const navigate = useNavigate();
+function BusinessSettings() {
 
   return (
     <>
@@ -24,4 +23,4 @@ function UserSetting() {
   );
 }
 
-export default UserSetting;
+export default BusinessSettings;

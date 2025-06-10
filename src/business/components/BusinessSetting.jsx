@@ -1,24 +1,24 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import style from "../styles/usernotification.module.css";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { useUser } from "../../context/UserContext"; // Make sure you're importing the context
 
-function Setting() {
+function BusinessSetting() {
   const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState(
     localStorage.getItem("profileImage") || ""
   );
 
-  const { username, email } = useContext(useUser);
+  const { username, email } = useUser();
 
   const [formData, setFormData] = useState({
     phoneNumber: "",
     gender: "",
-    dateOfBirth: "",
-    maritalStatus: "",
-    employmentStatus: "",
+    dateEstablished: "",
+    // maritalStatus: "",
+    // employmentStatus: "",
     city: "",
     state: "",
     country: "",
@@ -26,7 +26,7 @@ function Setting() {
   });
 
   const [isEditing, setIsEditing] = useState(false); // Controls edit mode
-  const [loading, setLoading] = useState(false); // Loading state to improve user experience
+  // const [loading, setLoading] = useState(false); // Loading state to improve user experience
   const [formattedDate, setFormattedDate] = useState("");
 
   const handleChange = (e) => {
@@ -57,7 +57,7 @@ function Setting() {
       }
 
       const data = new FormData();
-   
+
       Object.keys(formData).forEach((key) => {
         if (key === "profilePicture") {
           // Only append the image if a new file is selected
@@ -71,16 +71,16 @@ function Setting() {
 
       console.log("Form data before submission:", formData);
 
-      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
       const response = await axios.put(
-        `${API_BASE_URL}/user/profile/${currentUsername}`,
-        // `http://localhost:4000/user/profile/${currentUsername}`,
+        `${API_BASE_URL}/user/bus/profile/${currentUsername}`,
         data,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
       toast.success(response.data.message);
-    
+
       const updatedProfileData = {
         ...formData,
         profilePictureUrl: response.data.profilePictureUrl || imageSrc, // Keep existing image if not updated
@@ -93,7 +93,7 @@ function Setting() {
       );
 
       setImageSrc(updatedProfileData.profilePictureUrl); // Keep the same profile picture
-      
+
       setIsEditing(false);
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -108,108 +108,62 @@ function Setting() {
         toast.error("User not found. Please log in.");
         return;
       }
-  
+
       const token = localStorage.getItem("userAuthToken");
       console.log("Retrieved Token:", token); // Debugging
-  
+
       if (!token) {
         toast.error("Unauthorized access. Please log in.");
         return;
       }
-  
+
       try {
-        const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
         const response = await axios.get(
-          `${API_BASE_URL}/user/profile/${currentUsername}`,
+          `${API_BASE_URL}/user/bus/profile/${currentUsername}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
-  
+
         console.log("Fetched Profile Data:", response.data); // Debugging
-  
+
         setFormData(response.data.data);
-         // Ensure profile picture updates correctly
-         if (response.data.data.profilePictureUrl) {
-          const updatedImageUrl = `${response.data.data.profilePictureUrl}?t=${new Date().getTime()}`; // Prevent caching
+        // Ensure profile picture updates correctly
+        if (response.data.data.profilePictureUrl) {
+          const updatedImageUrl = `${
+            response.data.data.profilePictureUrl
+          }?t=${new Date().getTime()}`; // Prevent caching
           setImageSrc(updatedImageUrl);
           localStorage.setItem("profileImage", updatedImageUrl);
         }
-        // setImageSrc(response.data.data.profilePictureUrl); // Ensure profile picture updates
-        // setImageSrc(response.data.data.profilePictureUrl || imageSrc); // Ensure the latest image is set
 
-  
         // Save fresh data in localStorage
         localStorage.setItem("profileData", JSON.stringify(response.data.data));
-        // localStorage.setItem("profileImage", response.data.data.profilePictureUrl);
       } catch (error) {
         console.error("Error fetching profile:", error);
         toast.error("Failed to fetch profile data.");
       }
     };
-  
+
     fetchUserProfile();
   }, []);
-  
 
   useEffect(() => {
     // Convert the ISO date string to the correct format (yyyy-MM-dd)
-    if (formData.dateOfBirth) {
-      const date = new Date(formData.dateOfBirth);
+    if (formData.dateEstablished) {
+      const date = new Date(formData.dateEstablished);
       const formatted = date.toISOString().split("T")[0]; // "yyyy-MM-dd"
       setFormattedDate(formatted);
     }
-  }, [formData.dateOfBirth]);
+  }, [formData.dateEstablished]);
 
-  // useEffect(() => {
-  //   const fetchUserProfile = async () => {
-  //     const currentUsername = localStorage.getItem("userUsername");
-  //     if (!currentUsername) {
-  //       toast.error("User not found. Please log in.");
-  //       return;
-  //     }
-
-  //     const token = localStorage.getItem("userAuthToken");
-  //     console.log("Retrieved Token:", token); // Debugging
-
-  //     if (!token) {
-  //       toast.error("Unauthorized access. Please log in.");
-  //       return;
-  //     }
-
-  //     const savedData = localStorage.getItem("profileData");
-  //     if (savedData) {
-  //       const profileData = JSON.parse(savedData);
-  //       setFormData(profileData);
-  //       setImageSrc(profileData.profilePictureUrl); // Ensure the profile picture URL is correctly set
-  //     } else {
-  //       try {
-  //         const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-  //         const response = await axios.get(
-  //           `http://localhost:4000/user/profile/${currentUsername}`,
-  //           { headers: { Authorization: `Bearer ${token}` } }
-  //         );
-  //         setFormData(response.data);
-  //         localStorage.setItem("profileData", JSON.stringify(response.data));
-  //         localStorage.setItem("profileImage", response.data.profilePictureUrl);
-  //       } catch (error) {
-  //         console.error("Error fetching profile:", error);
-  //         toast.error("Failed to fetch profile data.");
-  //       }
-  //     }
-  //   };
-
-  //   fetchUserProfile();
-  // }, []);
-
-  
   const handlePasswordClick = () => {
-    navigate("/user/setting"); // Navigate to the '/compound' page
+    navigate("/user/business-settings"); // Navigate to the '/compound' page
   };
 
   const handleProfileClick = () => {
-    navigate("/user/password"); // Navigate to the '/compound' page
+    navigate("/user/business-password"); // Navigate to the '/compound' page
   };
-
-  // console.log("isEditing:", isEditing);
 
   return (
     <div>
@@ -294,73 +248,6 @@ function Setting() {
           </div>
         </div>
 
-        <div className={style.labeInpu}>
-          <div className={style.labe}>
-            <label className={style.lab} htmlFor="">
-              Marital Status
-            </label>
-            <select
-              value={formData.maritalStatus}
-              name="maritalStatus"
-              onChange={handleChange}
-              className={style.input}
-              disabled={!isEditing}
-            >
-              <option value="">Select</option>
-              <option value="Single">Single</option>
-              <option value="Married">Married</option>
-            </select>
-          </div>
-
-          <div className={style.labe}>
-            <label className={style.lab} htmlFor="">
-              Date of Birth
-            </label>
-            <input
-              type="date"
-              name="dateOfBirth"
-              // value={formData.dateOfBirth}
-              value={formattedDate}
-              onChange={handleChange}
-              placeholder="01/01/2025"
-              className={style.input}
-              disabled={!isEditing}
-            />
-          </div>
-        </div>
-
-        <div className={style.labeInpu}>
-          <div className={style.labe}>
-            <label className={style.lab} htmlFor="">
-              Emploment Status
-            </label>
-            <select
-              value={formData.employmentStatus}
-              name="employmentStatus"
-              onChange={handleChange}
-              className={style.input}
-              disabled={!isEditing}
-            >
-              <option value="">Select</option>
-              <option value="Employed">Employed</option>
-              <option value="Unemployed">Unemployed</option>
-            </select>
-          </div>
-
-          <div className={style.labe}>
-            <label className={style.lab} htmlFor="">
-              City
-            </label>
-            <input
-              type="text"
-              name="city"
-              value={formData.city}
-              onChange={handleChange}
-              className={style.input}
-              disabled={!isEditing}
-            />
-          </div>
-        </div>
 
         <div className={style.labeInpu}>
           <div className={style.labe}>
@@ -392,8 +279,8 @@ function Setting() {
           </div>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 }
-export default Setting;
+export default BusinessSetting;

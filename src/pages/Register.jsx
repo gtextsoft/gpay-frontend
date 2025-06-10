@@ -6,13 +6,15 @@ import style from "../styles/Register.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import TextInput from "../components/TextInput";
 import { useUser } from "../context/UserContext";
+
 import "react-toastify/dist/ReactToastify.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
 function Register() {
-  const { setUsername } = useContext(useUser); // Access setUsername from UserContext
+  // const { setUsername } = useContext(useUser); // Access setUsername from UserContext
+  const { setUsername } = useUser();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 

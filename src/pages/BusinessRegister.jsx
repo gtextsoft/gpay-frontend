@@ -12,7 +12,7 @@ import * as Yup from "yup";
 import axios from "axios";
 
 function BusinessRegister() {
-  const { setUsername } = useContext(useUser); // Access setUsername from UserContext
+  const { setUsername } = useUser(); // Access setUsername from UserContext
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -53,38 +53,27 @@ function BusinessRegister() {
         "Sending registration request to:",
         `${API_BASE_URL}/user/business-register`
       );
-      // console.log("Registration payload:", values);
 
-      // const response = await axios.post(
-      //   `${API_BASE_URL}/user/business-register`,
-      //   values,
-      //   {
-      //     timeout: 10000, // 10 seconds
-      //   }
-      // );
+      const payload = {
+        busName: values.busName,
+        busLastName: values.busLastName,
+        email: values.email,
+        password: values.password,
+        confirmPassword: values.confirmPassword,
+        businessName: values.businessName,
+        position: values.position,
+        phoneNumber: values.phoneNumber.toString(), // ensure string format
+      };
 
-      // Transform frontend values to backend schema
-const payload = {
-  busName: values.busName,
-  busLastName: values.busLastName,
-  email: values.email,
-  password: values.password,
-  confirmPassword: values.confirmPassword,
-  businessName: values.businessName,
-  position: values.position,
-  phoneNumber: values.phoneNumber.toString(), // ensure string format
-};
+      console.log("Registration payload:", payload);
 
-console.log("Registration payload:", payload);
-
-const response = await axios.post(
-  `${API_BASE_URL}/user/business-register`,
-  payload,
-  {
-    timeout: 10000,
-  }
-);
-
+      const response = await axios.post(
+        `${API_BASE_URL}/user/business-register`,
+        payload,
+        {
+          timeout: 10000,
+        }
+      );
 
       const { verificationToken, email } = response.data;
       localStorage.setItem("VerifyToken", verificationToken);

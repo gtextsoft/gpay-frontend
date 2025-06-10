@@ -25,6 +25,7 @@ import PaymentList from "../components/PaymentList";
 import SendModal from "../components/SendModal";
 import ReceiveModal from "../components/ReceiveModal";
 import SwapModal from "../components/SwapModal";
+import UserHeader from "../components/UserHeader";
 
 function UserDashboard() {
   const { kycStatus, currentStep, kycRejectionReason, startKyc, isKycLoading } =
@@ -97,12 +98,14 @@ function UserDashboard() {
           Instant="Instant 20% back on your investment"
           Now=" Invest Now"
           Outline="outline1"
+          Link= "https://www.gvestinvestmentcapital.com/"
         />
         <Invest
           Unlimited="Donate Today"
           Instant="Change a Life Give Hope, Get Impact Instantly"
           Now=" Donate Now"
           Outline="outline2"
+          Link=""
         />
       </div>
       <PaymentList />
@@ -113,6 +116,7 @@ function UserDashboard() {
     <div className={style.componentContent}>
       <SideBar />
       <div className={style.headerContent}>
+        <UserHeader/>
         <div
           className={`${style.outline} ${showSendModal ? style.blur : ""} ${
             showReceiveModal ? style.blur : ""

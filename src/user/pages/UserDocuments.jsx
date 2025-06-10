@@ -13,7 +13,7 @@ function Documents() {
   };
 
   const mine = () => {
-    navigate("/user/mine"); // Navigate to the '/compound' page
+    navigate("/user/document"); // Navigate to the '/compound' page
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false); // Controls the modal visibility

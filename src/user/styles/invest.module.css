@@ -68,8 +68,8 @@
     color: #104E69;
   }
 
-  .inw{
-    list-style: none;
-    color: #104E69;
-    font-size: .9rem;
+  .innow:hover{
+    color: white;
+    /* background-color: #104E69; */
+    background-color: transparent;
   }

@@ -3,6 +3,7 @@ import { HeaderProvider } from "./context/HeaderContext";
 import { UserProvider } from "./context/UserContext";
 import { BrowserRouter as Router } from "react-router-dom";
 import { KYCProvider } from "./context/KycContext";
+import { BusKYCProvider } from "./context/BusKycContext";
 import { AdminProvider } from "./context/AdminContext";
 // import { loadStripe } from "@stripe/stripe-js";
 // import { Elements } from "@stripe/react-stripe-js";
@@ -16,6 +17,7 @@ function App() {
     <div>
       <HeaderProvider>
         <KYCProvider>
+        <BusKYCProvider>
           <UserProvider>
           <AdminProvider>
           <Router>
@@ -27,6 +29,7 @@ function App() {
           </AdminProvider>
           </UserProvider>
           {/* </NotificationProvider> */}
+        </BusKYCProvider>
         </KYCProvider>
       </HeaderProvider>
     </div>

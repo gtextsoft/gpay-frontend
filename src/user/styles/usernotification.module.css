@@ -242,15 +242,16 @@
   padding: 0.9rem;
   border-radius: 0.5rem;
   margin: 1.5rem;
-  background-color: rgba(110, 0, 0, 1);
-  color: rgba(255, 240, 240, 1);
+  background-color: #033349;
+  color: #ebfeff;
   border: none;
+  width: 20%;
 }
 
 .savt {
   background-color: transparent;
   border: none;
-  color: rgba(255, 240, 240, 1);
+  color: #ebfeff;
 }
 
 @media (max-width: 979px) {

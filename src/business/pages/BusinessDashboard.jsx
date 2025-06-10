@@ -1,137 +1,151 @@
+import { useState, useEffect } from "react";
+import { useBusKYC } from "../../context/BusKycContext";
+import style from "../styles/userdashboard.module.css";
+
 import SideBar from "../components/UserSideBar";
-import PaymentList from "../components/PaymentList";
-import Upcoming from "../components/Upcoming";
+import UserHeader from "../components/BusinessHeader";
+
+import BusWelcome from "../components/BusWelcome";
+import BusIndIdentify from "../components/BusIndIdentify";
+import BusIndIdentify2 from "../components/BusIndIdentify2";
+import BusIndIdentify3 from "../components/BusIndIdentify3";
+import BusIndIdentify4 from "../components/BusIndIdentify4";
+import BusIndIdentify5 from "../components/BusIndIdentify5";
+import BusIndIdentify6 from "../components/BusIndIdentify6";
+
 import TotalInvestment from "../components/TotalInvestment";
 import TotalInvestedAmount from "../components/TotalInvestedAmount";
 import TotalMonthlyInterest from "../components/TotalMonthlyInterest";
-
-import Welcome from "../components/Welcome";
-import IndIdentify from "../components/IndIdentify";
-import IndIdentify2 from "../components/IndIdentify2";
-import IndIdentify3 from "../components/IndIdentify3";
-import IndIdentify4 from "../components/IndIdentify4";
-import IndIdentify5 from "../components/IndIdentify5";
-import IndIdentify6 from "../components/IndIdentify6";
-import IndIdentify7 from "../components/IndIdentify7";
-import UserHeader from "../components/UserHeader";
-import style from "../styles/userdashboard.module.css";
 import Overview from "../components/Overview";
 import WalletDash from "../components/WalletDash";
 import Invest from "../components/Invest";
+import PaymentList from "../components/PaymentList";
 
-function UserDashboard() {
-  // const [investments] = useState({
-  //   propertyInvestments: [],
-  //   investmentSchemes: [],
-  // });
+import SendModal from "../components/SendModal";
+import ReceiveModal from "../components/ReceiveModal";
+import SwapModal from "../components/SwapModal";
 
-  // useEffect(() => {
-  //   const fetchInvestments = async () => {
-  //     try {
-  //       const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  //       const token = localStorage.getItem("userAuthToken");
-  //       const username = localStorage.getItem("userUsername");
+function BusinessDashboard() {
+  const { kycStatus, currentStep, kycRejectionReason, startKyc, isKycLoading } =
+    useBusKYC();
 
-  //       if (!username) {
-  //         throw new Error("User name not found in localStorage");
-  //       }
+  const [showRefillForm, setShowRefillForm] = useState(false); // ✅ NEW
+  const [showSendModal, setShowSendModal] = useState(false);
+  const [showReceiveModal, setShowReceiveModal] = useState(false);
+  const [showSwapModal, setShowSwapModal] = useState(false);
 
-  //       const response = await axios.get(
-  //         `${API_BASE_URL}/user/user-investments/${username}`,
-  //         {
-  //           headers: { Authorization: `Bearer ${token}` },
-  //         }
-  //       );
+  if (isKycLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-gray-500">Loading your dashboard...</p>
+      </div>
+    );
+  }
 
-  //       console.log("Fetched Investments:", response.data);
-  //       setInvestments(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching investments", error);
-  //     }
-  //   };
+  const handleRefillClick = () => {
+    startKyc(); // Reset KYC state
+    setShowRefillForm(true); // ✅ Show form steps
+  };
 
-  //   fetchInvestments();
-  // }, []);
+  const renderKycComponent = () => {
+    if (kycStatus === "not_started") return <BusWelcome />;
+    if (kycStatus === "in_review") return <BusIndIdentify6/>;
 
-  // ✅ Calculate totals
+    switch (currentStep) {
+      case 1:
+        return <BusIndIdentify />;
+      case 2:
+        return <BusIndIdentify2 />;
+      case 3:
+        return <BusIndIdentify3 />;
+      case 4:
+        return <BusIndIdentify4 />;
+      case 5:
+        return <BusIndIdentify5 />;
+      case 6:
+        return <BusIndIdentify6 />;
+      default:
+        return <BusWelcome />;
+    }
+  };
 
-  // const totalInvestmentAmount =
-  //   investments.propertyInvestments.reduce(
-  //     (sum, inv) => sum + (inv.amountPaid ?? 0),
-  //     0
-  //   ) +
-  //   investments.investmentSchemes.reduce(
-  //     (sum, inv) => sum + (inv.amountPaid ?? 0),
-  //     0
-  //   );
-
-  // const totalMonthlyInterest = investments.investmentSchemes.reduce(
-  //   (sum, inv) => sum + (inv.roi ?? 0),
-  //   0
-  // );
-
-  // const totalInvestments =
-  //   investments.propertyInvestments.length +
-  //   investments.investmentSchemes.length;
+  const renderDashboard = () => (
+    <>
+      <p className={style.dollar}>
+        Dollar Account
+        <span className="material-symbols-outlined">keyboard_arrow_down</span>
+      </p>
+      <div className={style.investTotal}>
+        <TotalInvestment />
+        <TotalInvestedAmount />
+        <TotalMonthlyInterest />
+      </div>
+      <div className={style.overWallet}>
+        <Overview />
+        <WalletDash
+          onSendClick={() => setShowSendModal(true)}
+          onReceiveClick={() => setShowReceiveModal(true)}
+          onSwapClick={() => setShowSwapModal(true)}
+        />
+      </div>
+      <div className={style.invest}>
+        <Invest
+          Unlimited=" Unlimited Cashback"
+          Instant="Instant 20% back on your investment"
+          Now=" Invest Now"
+          Outline="outline1"
+          Link= "https://www.gvestinvestmentcapital.com/"
+        />
+        <Invest
+          Unlimited="Donate Today"
+          Instant="Change a Life Give Hope, Get Impact Instantly"
+          Now=" Donate Now"
+          Outline="outline2"
+          Link=""
+        />
+      </div>
+      <PaymentList />
+    </>
+  );
 
   return (
-    <>
-      <div className={style.componentContent}>
-        <SideBar />
-
-        <div className={style.headerContent}>
-          <UserHeader />
-
-          <div className={style.outline}>
-            <p className={style.dollar}>
-              Dollar Account
-              <span class="material-symbols-outlined">keyboard_arrow_down</span>
-            </p>
-            <div className={style.investTotal}>
-              <TotalInvestment />
-              <TotalInvestedAmount />
-              <TotalMonthlyInterest />
+    <div className={style.componentContent}>
+      <SideBar />
+      <div className={style.headerContent}>
+        <UserHeader/>
+        <div
+          className={`${style.outline} ${showSendModal ? style.blur : ""} ${
+            showReceiveModal ? style.blur : ""
+          } ${
+            showSwapModal ? style.blur : ""
+          } `} 
+        >
+          {kycStatus === "rejected" && !showRefillForm && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              <strong>Your KYC was rejected.</strong>
+              <p>Reason: {kycRejectionReason || "No reason provided."}</p>
+              <button
+                onClick={handleRefillClick}
+                className="mt-3 px-4 py-2 bg-red-600 text-white rounded"
+              >
+                Refill Form
+              </button>
             </div>
+          )}
 
-            <div className={style.overWallet}>
-              <Overview />
-              <WalletDash />
-            </div>
-
-            <div className={style.invest}>
-              <Invest
-                Unlimited=" Unlimited Cashbank"
-                Instant="Instant 20% back on your investment"
-                Now=" Invest Now"
-                Outline="outline1"
-              />
-              <Invest
-                Unlimited="Donate Today"
-                Instant=" Change a Life Give Hope, Get Impact Instantly"
-                Now=" Donate Now"
-                Outline="outline2"
-              />
-            </div>
-
-            {/* <div className={style.overcome}>
-              <Upcoming />
-            </div> */}
-
-            <PaymentList />
-
-            <Welcome />
-            <IndIdentify />
-            <IndIdentify2 />
-            <IndIdentify3 />
-            <IndIdentify4 />
-            <IndIdentify5 />
-            <IndIdentify6 />
-            <IndIdentify7 />
-          </div>
+          {kycStatus === "approved"
+            ? renderDashboard()
+            : (kycStatus !== "rejected" || showRefillForm) &&
+              renderKycComponent()}
         </div>
+        {showSendModal && <SendModal onClose={() => setShowSendModal(false)} />}
+        {showReceiveModal && (
+          <ReceiveModal onClose={() => setShowReceiveModal(false)} />
+        )}
+        {showSwapModal && <SwapModal onClose={() => setShowSwapModal(false)} />}
       </div>
-    </>
+    </div>
   );
 }
 
-export default UserDashboard;
+export default BusinessDashboard;

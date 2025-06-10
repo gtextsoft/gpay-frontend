@@ -13,7 +13,8 @@ function ForgotPassword() {
     e.preventDefault();
     setLoading(true);
     try {
-      // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+      // const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
       const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
       await axios.post(`${API_BASE_URL}/user/forgot-password`, { email });
       // `http://localhost:4000/user/forgot-password`, { email });

@@ -11,6 +11,7 @@
 
 }
 
+
 .pHead {
   font-size: 1.3rem;
   font-weight: 600;
@@ -71,6 +72,8 @@
   padding: 1rem;
   outline: none;
   border: 0.1rem solid black;
+  background-color: white;
+  color: black;
 }
 
 .send {
@@ -106,9 +109,9 @@ margin: 0 auto;
 }
 
 .toggleSection button {
-  background-color: rgb(255,240,240);
+  background-color: #EBFEFF;
   border: none;
-  color: rgb(110,0,0);
+  color: #033349;
   padding: 1rem;
   flex: 1 1 auto;
   text-align: center;
@@ -123,11 +126,11 @@ margin: 0 auto;
 }
 
 .toggleSection .active {
-  background-color: rgb(110,0,0);
+  background-color: #033349;
   color: white;
-  border-color: rgb(110,0,0);
+  border-color: #033349;
   font-weight: bold;
-  /* box-shadow: 0px 2px 5px rgb(110,0,0); */
+  /* box-shadow: 0px 2px 5px #033349; */
 }
 
 
@@ -158,10 +161,12 @@ margin: 0 auto;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: white;
+  color: black;
 }
 
 .documentForm button {
-  background-color: rgb(110,0,0);
+  background-color: #033349;
   color: white;
   padding: 10px;
   border: none;
@@ -171,7 +176,8 @@ margin: 0 auto;
 }
 
 .documentForm button:hover {
-  background-color: rgb(110,0,0);
+  background-color: #EBFEFF;
+  color: #033349;
 }
 
 .documentForm button:disabled {

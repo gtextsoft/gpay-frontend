@@ -1,6 +1,6 @@
 import SideBar from "../components/UserSideBar";
 import UserHeader from "../components/UserHeader";
-import style from "../../styles/TC.module.css";
+import style from "../../styles/tc.module.css";
 function UserTerm() {
   return (
     <>
@@ -13,81 +13,81 @@ function UserTerm() {
           <div className={style.outlines}>
             <div className={style.content}>
               <p className={style.head}>1. Introduction</p>
-              <p>
+              <p className={style.heads}>
                 Welcome to GVest. By using our website and services, you agree
                 to comply with these Terms and Conditions. Please read them
                 carefully before accessing or using our platform.
               </p>
 
               <h2 className={style.head}>2. Definitions</h2>
-              <p>
+              <p className={style.heads}>
                 - Company: Refers to GText, its subsidiaries, affiliates, and
                 employees.
               </p>
-              <p>
+              <p className={style.heads}>
                 - User: Refers to any person accessing or using the website or
                 services.
               </p>
-              <p>
+              <p className={style.heads}>
                 - Services: Refers to the investment opportunities, real estate
                 listings, and other services provided by GText.
               </p>
 
               <p className={style.head}>3. Eligibility</p>
-              <p>
+              <p className={style.heads}>
                 You must be at least 18 years old to use our services. By
                 accessing the website, you confirm that you meet this age
                 requirement.
               </p>
 
               <p className={style.head}>4. Use Of Service</p>
-              <p>
+              <p className={style.heads}>
                 You agree to use our services solely for lawful purposes. Any
                 unauthorized use of the platform, such as fraudulent activity or
                 misuse of data, is strictly prohibited.
               </p>
 
               <p className={style.head}>5. Payments and Transactions</p>
-              <p>
+              <p className={style.heads}>
                 All transactions are processed securely. By making a payment,
                 you agree to our terms for refunds and cancellations as detailed
                 on the relevant service page.
               </p>
 
               <p className={style.head}>6. Intellectual Property</p>
-              <p>
+              <p className={style.heads}>
                 All content on our website, including text, graphics, logos, and
                 images, is the property of GVest and is protected by copyright
                 laws. Unauthorized use of this content is prohibited.
               </p>
 
               <p className={style.head}>7. Limitation of Liability</p>
-              <p>
+              <p className={style.heads}>
                 GText is not liable for any indirect, incidental, or
                 consequential damages resulting from the use of our services or
                 platform.
               </p>
 
               <p className={style.head}>8. Termination</p>
-              <p>
+              <p className={style.heads}>
                 We reserve the right to suspend or terminate your access to our
                 services if you violate these terms.
               </p>
 
               <p className={style.head}>9. Governing Law</p>
-              <p>
+              <p className={style.heads}>
                 These terms are governed by the laws of [Your Jurisdiction]. Any
                 disputes will be resolved exclusively in [Your Jurisdiction].
               </p>
 
               <p className={style.head}>10. Changes to Terms</p>
-              <p>
+              <p className={style.heads}>
                 We may update these Terms and Conditions at any time. Please
                 review them periodically to stay informed.
               </p>
 
               <p className={style.head}>11. Contact</p>
-              <p>
+              <p className={style.heads}>
                 If you have any questions about these terms, please contact us
                 at info@gvest.com
               </p>

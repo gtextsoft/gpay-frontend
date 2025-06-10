@@ -41,7 +41,6 @@ function IndIdentify() {
     goToStep(2); // Proceed to IndIdentify2
   };
 
-
   return (
     <>
       <div className={style.outline}>

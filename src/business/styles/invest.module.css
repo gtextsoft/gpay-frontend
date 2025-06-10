@@ -1,75 +1,75 @@
 .outline1 {
-    margin: 3vh 0 0 0;
-    border-radius: .5rem;
-    padding: 2rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    color: white;
-    background-color: #104E69;
-    width: 49%;
-  }
+  margin: 3vh 0 0 0;
+  border-radius: .5rem;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  color: white;
+  background-color: #104E69;
+  width: 49%;
+}
 
-  /* .outline2 {
-    margin: 3vh 0 0 0;
-    border-radius: .5rem;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    color: white;
-    width: 49%;
-  } */
+/* .outline2 {
+  margin: 3vh 0 0 0;
+  border-radius: .5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  color: white;
+  width: 49%;
+} */
 
-  .outline2 {
-    margin: 3vh 0 0 0;
-    border-radius: 0.5rem;
-    padding: 2rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    color: white;
-    width: 49%;
-  
-    /* Background image settings */
-    background-image: url('/images/backInvest.png'); /* Adjust the path if needed */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  
-    /* Optional overlay using gradient for readability */
-    background-blend-mode: overlay;
-    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for text contrast */
-  }
+.outline2 {
+  margin: 3vh 0 0 0;
+  border-radius: 0.5rem;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  color: white;
+  width: 49%;
 
-  .instant{
-    font-size: .85rem;
-  }
+  /* Background image settings */
+  background-image: url('/images/backInvest.png'); /* Adjust the path if needed */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  .content{
-    text-align: left;
-  }
+  /* Optional overlay using gradient for readability */
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for text contrast */
+}
 
-  .unlimited{
-    font-size: 1.5rem;
-  }
+.instant{
+  font-size: .85rem;
+}
 
-  .innow{
-    border-radius: .5rem;
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    justify-content: space-between;
-    padding: .5rem 1rem;
-    background-color: white;
-    color: #104E69;
-  }
+.content{
+  text-align: left;
+}
 
-  .inw{
-    list-style: none;
-    color: #104E69;
-    font-size: .9rem;
-  }
+.unlimited{
+  font-size: 1.5rem;
+}
+
+.innow{
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  justify-content: space-between;
+  padding: .5rem 1rem;
+  background-color: white;
+  color: #104E69;
+}
+
+.innow:hover{
+  color: white;
+  /* background-color: #104E69; */
+  background-color: transparent;
+}

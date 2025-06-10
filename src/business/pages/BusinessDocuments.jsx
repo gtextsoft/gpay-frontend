@@ -1,7 +1,7 @@
 import SideBar from "../components/UserSideBar";
 import { useState } from "react";
 // import Transactions from "../components/Transactions";
-import UserHeader from "../components/UserHeader";
+import UserHeader from "../components/BusinessHeader";
 import style from "../styles/userdashboard.module.css";
 import { useNavigate } from "react-router-dom";
 import UserDocumentList from "../components/UserDocumentList";

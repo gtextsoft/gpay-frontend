@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import UserSideBar from "./UserSideBar";
-import UserHeader from "./UserHeader";
+import UserHeader from "./BusinessHeader";
 import style from "../styles/addinvest.module.css";
 
 function UserDocumentList() {

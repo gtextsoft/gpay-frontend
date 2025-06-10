@@ -2,15 +2,15 @@
 import { HandCoins, Repeat, Send } from "lucide-react";
 import style from "../styles/wallet2.module.css";
 
-function UserActions() {
+function UserActions({ onSendClick, onReceiveClick, onSwapClick }) {
   return (
     <div className={style.transact}>
-      <div className={style.icon1}>
+      <div className={style.icon1} onClick={onSendClick}>
         <Send />
         <p>Send</p>
       </div>
 
-      <div className={style.icon2}>
+      <div className={style.icon2} onClick={onReceiveClick}>
         <span className="material-icons">call_received</span>
         <p>Receive</p>
       </div>
@@ -20,7 +20,7 @@ function UserActions() {
         <p>Invoice</p>
       </div>
 
-      <div className={style.icon4}>
+      <div className={style.icon4} onClick={onSwapClick}>
         <Repeat />
         <p>Swap</p>
       </div>

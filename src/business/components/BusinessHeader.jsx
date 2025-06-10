@@ -7,8 +7,9 @@ import { useUser } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 
-function UserHeader() {
-  const context = useContext(useUser) || {};
+function BusinessHeader() {
+  const context = useUser() || {};
+  
   const { username, setUsername } = context;
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -25,50 +26,52 @@ function UserHeader() {
     navigate(-1); // This takes the user to the previous page
   };
 
-  useEffect(() => {
-    const markNotificationsRead = async () => {
-      try {
-        const token = localStorage.getItem("userAuthToken");
-        const currentUsername = localStorage.getItem("userUsername");
+  // useEffect(() => {
+  //   const markNotificationsRead = async () => {
+  //     try {
+  //       const token = localStorage.getItem("userAuthToken");
+  //       // const currentIdentifier = localStorage.getItem("userUsername");
+  //       const currentIdentifier = username || localStorage.getItem("userUsername"); // This should hold either username or busName
 
-        await axios.put(
-          `${import.meta.env.VITE_API_BASE_URL}/api/notification/${currentUsername}/mark-read`,
-          {},
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-      } catch (error) {
-        console.error("Failed to mark notifications as read:", error);
-      }
-    };
 
-    markNotificationsRead();
-  }, []);
+  //       await axios.put(
+  //         `${import.meta.env.VITE_API_BASE_URL}/api/notification/${currentIdentifier}/mark-read`,
+  //         {},
+  //         { headers: { Authorization: `Bearer ${token}` } }
+  //       );
+  //     } catch (error) {
+  //       console.error("Failed to mark notifications as read:", error);
+  //     }
+  //   };
 
-  const fetchNotifications = async () => {
-    try {
-      const token = localStorage.getItem("userAuthToken");
-      const currentUsername = username || localStorage.getItem("userUsername");
+  //   markNotificationsRead();
+  // }, []);
 
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_BASE_URL}/api/notification/${currentUsername}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+  // const fetchNotifications = async () => {
+  //   try {
+  //     const token = localStorage.getItem("userAuthToken");
+  //     const currentIdentifier = username || localStorage.getItem("userUsername");
 
-      const hasUnread = response.data.notifications.some(
-        (notification) => !notification.read
-      );
+  //     const response = await axios.get(
+  //       `${import.meta.env.VITE_API_BASE_URL}/api/notification/${currentIdentifier}`,
+  //       {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       }
+  //     );
 
-      setHasNotifications(hasUnread); // ✅ Correct logic
-    } catch (error) {
-      console.error("Error fetching notifications:", error);
-    }
-  };
+  //     const hasUnread = response.data.notifications.some(
+  //       (notification) => !notification.read
+  //     );
 
-  useEffect(() => {
-    fetchNotifications();
-  }, [username]);
+  //     setHasNotifications(hasUnread); // ✅ Correct logic
+  //   } catch (error) {
+  //     console.error("Error fetching notifications:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchNotifications();
+  // }, [username]);
 
   useEffect(() => {
     const storedProfileImage = localStorage.getItem("profileImage");
@@ -79,9 +82,11 @@ function UserHeader() {
     const fetchUser = async () => {
       setLoading(true);
       try {
-        let currentUsername = username || localStorage.getItem("userUsername");
+        // let currentIdentifier = username || localStorage.getItem("userUsername");
+        const currentIdentifier = username || localStorage.getItem("userUsername"); // This should hold either username or busName
 
-        if (!currentUsername) {
+
+        if (!currentIdentifier) {
           toast.error("Username is not available. Redirecting to login...");
           navigate("/login");
           return;
@@ -96,7 +101,7 @@ function UserHeader() {
 
         const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
         const response = await axios.get(
-          `${API_BASE_URL}/user/one-user/${currentUsername}`,
+          `${API_BASE_URL}/user/one-user/${currentIdentifier}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -164,4 +169,4 @@ function UserHeader() {
   );
 }
 
-export default UserHeader;
+export default BusinessHeader;

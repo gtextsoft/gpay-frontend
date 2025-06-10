@@ -1,13 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import SideBar from "../components/UserSideBar";
-import UserHeader from "../components/UserHeader";
+import UserHeader from "../components/BusinessHeader";
 import style from "../styles/usernotification.module.css";
 
 import Password from "../components/Password";
 
-function UserPassword() {
-  const navigate = useNavigate();
-
+function BusinessPassword() {
   return (
     <>
       <div className={style.componentContent}>
@@ -17,7 +15,7 @@ function UserPassword() {
           <UserHeader />
 
           <div className={style.outline}>
-          <Password/>
+            <Password />
           </div>
         </div>
       </div>
@@ -25,4 +23,4 @@ function UserPassword() {
   );
 }
 
-export default UserPassword;
+export default BusinessPassword;

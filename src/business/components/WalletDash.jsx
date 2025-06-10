@@ -1,7 +1,7 @@
 import style from "../styles/userdashboard.module.css";
 import Wallet2 from "../components/Wallet2";
 import UserActions from "../components/UserActions";
-function WalletDash() {
+function WalletDash({ onSendClick, onReceiveClick, onSwapClick  }) {
   return (
     <>
       <div className={style.out}>
@@ -26,7 +26,7 @@ function WalletDash() {
         </div>
 
         </div>
-        <UserActions />
+        <UserActions onSendClick={onSendClick} onReceiveClick={onReceiveClick} onSwapClick={onSwapClick}/>
         
       </div>
     </>

@@ -50,54 +50,14 @@ function Password() {
         </div>
 
         <form action="" className={style.pass} onSubmit={handleSubmit}>
-          {/* <div className={style.labet}>
-            <label className={style.lab} htmlFor="">
-              Old Password
-            </label>
-
-            <input
-              type="text"
-              name=""
-              id=""
-              placeholder="my old password"
-              className={style.input}
-            />
-          </div>
-
-          <div className={style.labet}>
-            <label className={style.lab} htmlFor="">
-              New Password
-            </label>
-
-            <input
-              type="text"
-              name=""
-              id=""
-              placeholder="my new password"
-              className={style.input}
-            />  
-          </div>
-
-          <div className={style.labet}>
-            <label className={style.lab} htmlFor="">
-              Confirm Password
-            </label>
-
-            <input
-              type="text"
-              name=""
-              id=""
-              placeholder="my new password"
-              className={style.input}
-            />
-          </div> */}
+    
 
           <h2>Reset your password</h2>
           <p>
             Enter your registered email address, and we'll send you reset
             instructions.
           </p>
-          <br />
+
           <div className={style.labet}>
             <label htmlFor="" className={style.lab}>
               Enter Your Registered Email
@@ -113,13 +73,9 @@ function Password() {
             />
           </div>
 
-          {/* <button className={style.savt}>
-            {loading ? "Submitting..." : "Submit"}
-          </button> */}
-
-          {/* <div className={style.sav}> */}
+         
           <button className={style.sav}>Save</button>
-          {/* </div> */}
+   
         </form>
       </div>
     </div>
