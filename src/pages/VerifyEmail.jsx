@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
-// import style from "../styles/Register.module.css";
+// import style from "../styles/register.module.css";
 // import { NavLink, useNavigate } from "react-router-dom";
 // import axios from "axios";
 
@@ -102,7 +102,7 @@
 import React, { useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import style from "../styles/Register.module.css";
+import style from "../styles/register.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 

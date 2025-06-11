@@ -1,5 +1,5 @@
 import React from "react";
-import style from "../styles/Register.module.css";
+import style from "../styles/register.module.css";
 import { NavLink } from "react-router-dom";
 
 function EmailSuccess() {

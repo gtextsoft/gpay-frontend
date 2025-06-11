@@ -83,7 +83,13 @@ function UserHeader() {
     const fetchUser = async () => {
       setLoading(true);
       try {
-        let currentIdentifier = username || localStorage.getItem("userUsername");
+        // let currentIdentifier = username || localStorage.getItem("userUsername");
+
+        const currentIdentifier =
+        username ||
+        localStorage.getItem("userUsername") || // individual
+        localStorage.getItem("busUsername"); // ✅ add this
+
 
         if (!currentIdentifier) {
           toast.error("Username is not available. Redirecting to login...");
@@ -91,7 +97,11 @@ function UserHeader() {
           return;
         }
 
-        const token = localStorage.getItem("userAuthToken");
+        // const token = localStorage.getItem("userAuthToken");
+
+        const token =
+        localStorage.getItem("userAuthToken") || // individual
+        localStorage.getItem("businessAuthToken");
         if (!token) {
           toast.error("Unauthorized access. Please log in.");
           navigate("/login");

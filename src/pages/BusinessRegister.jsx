@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ClipLoader } from "react-spinners"; // Import spinner
-import style from "../styles/Register.module.css";
+import style from "../styles/register.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import TextInput from "../components/TextInput";
 import { useUser } from "../context/UserContext";

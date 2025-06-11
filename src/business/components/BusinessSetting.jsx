@@ -45,9 +45,11 @@ function BusinessSetting() {
   const handleSubmit = async () => {
     try {
       // const currentUsername = localStorage.getItem("userUsername");
-      const currentUsername =
-      localStorage.getItem("userUsername") || // individual
-      localStorage.getItem("busUsername");
+      // const currentUsername =
+      // localStorage.getItem("userUsername") || 
+      // localStorage.getItem("busUsername");
+      const currentUsername = username || localStorage.getItem("busUsername") || localStorage.getItem("userUsername");
+
       if (!currentUsername) {
         toast.error("Username is not available. Please log in again.");
         return;

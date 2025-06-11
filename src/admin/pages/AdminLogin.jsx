@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import style from "../../styles/Register.module.css";
+import style from "../../styles/register.module.css";
 
 function AdminLogin() {
   const { setUsername } = useAdmin(); // Access UserContext
