@@ -1,6 +1,6 @@
 import SideBar from "../components/UserSideBar";
 import UserHeader from "../components/BusinessHeader";
-import style from "../../styles/TC.module.css";
+import style from "../../styles/tc.module.css";
 function UserTerm() {
   return (
     <>
