@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import style from "../styles/Welcome.module.css";
+import style from "../styles/welcome.module.css";
 
 function Welcome() {
   return (
