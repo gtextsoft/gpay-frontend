@@ -3,7 +3,7 @@ import { useKYC } from "../../context/KycContext";
 import style from "../styles/userdashboard.module.css";
 
 import SideBar from "../components/UserSideBar";
-// import UserHeader from "../components/UserHeader";
+import UserHeader from "../components/UserHeader";
 
 import Welcome from "../components/Welcome";
 import IndIdentify from "../components/IndIdentify";
@@ -25,9 +25,19 @@ import PaymentList from "../components/PaymentList";
 import SendModal from "../components/SendModal";
 import ReceiveModal from "../components/ReceiveModal";
 import SwapModal from "../components/SwapModal";
-import UserHeader from "../components/UserHeader";
+import { useUser } from "../../context/UserContext";
 
 function UserDashboard() {
+  const { username, userId } = useUser();
+
+  useEffect(() => {
+    console.log("IndividualDashboard mounted");
+    console.log("Context username:", username);
+    console.log("Context userId:", userId);
+    console.log("localStorage role:", sessionStorage.getItem("userRole"));
+    console.log("localStorage token:", sessionStorage.getItem("individualAuthToken"));
+  }, []);
+
   const { kycStatus, currentStep, kycRejectionReason, startKyc, isKycLoading } =
     useKYC();
 

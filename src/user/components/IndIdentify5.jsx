@@ -65,9 +65,9 @@ function IndIdentify5() {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-      // const token = localStorage.getItem("userAuthToken");
-      const token =    localStorage.getItem("userAuthToken") ||
-              localStorage.getItem("businessAuthToken")
+      // const token = sessionStorage.getItem("individualAuthToken");
+      const token =    sessionStorage.getItem("individualAuthToken") ||
+              sessionStorage.getItem("businessAuthToken")
 
       updateStepData("step5", values);
       

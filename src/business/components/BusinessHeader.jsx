@@ -27,7 +27,7 @@ function BusinessHeader() {
   };
 
   useEffect(() => {
-    const storedProfileImage = localStorage.getItem("profileImage");
+    const storedProfileImage = sessionStorage.getItem("profileBusImage");
     if (storedProfileImage) {
       setImageSrc(storedProfileImage); // Set the header image to the saved one
     }
@@ -35,12 +35,10 @@ function BusinessHeader() {
     const fetchUser = async () => {
       setLoading(true);
       try {
-        // let currentIdentifier = username || localStorage.getItem("userUsername");
-        // const currentIdentifier = username || localStorage.getItem("userUsername"); // This should hold either username or busName
+        // let currentIdentifier = username || sessionStorage.getItem("individualUsername");
+        // const currentIdentifier = username || sessionStorage.getItem("individualUsername"); // This should hold either username or busName
         const currentIdentifier =
-          username ||
-          localStorage.getItem("userUsername") || // individual
-          localStorage.getItem("busUsername"); // ✅ add this
+          username || sessionStorage.getItem("busUsername"); // ✅ add this
 
         if (!currentIdentifier) {
           toast.error("Username is not available. Redirecting to login...");
@@ -48,11 +46,9 @@ function BusinessHeader() {
           return;
         }
 
-        // const token = localStorage.getItem("userAuthToken");
+        // const token = sessionStorage.getItem("individualAuthToken");
 
-        const token =
-          localStorage.getItem("userAuthToken") || // individual
-          localStorage.getItem("businessAuthToken");
+        const token = sessionStorage.getItem("businessAuthToken");
 
         if (!token) {
           toast.error("Unauthorized access. Please log in.");
@@ -73,8 +69,8 @@ function BusinessHeader() {
         // Optional: If you want to update imageSrc from API if localStorage image is missing
         if (!storedProfileImage && response.data.userData.profilePictureUrl) {
           setImageSrc(response.data.userData.profilePictureUrl);
-          localStorage.setItem(
-            "profileImage",
+          sessionStorage.setItem(
+            "profileBusImage",
             response.data.userData.profilePictureUrl
           );
         }

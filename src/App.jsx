@@ -10,8 +10,8 @@ function App() {
   return (
     <div>
       <HeaderProvider>
-        <KYCProvider>
           <BusKYCProvider>
+        <KYCProvider>
             <UserProvider>
               <AdminProvider>
                 <Router>
@@ -19,8 +19,8 @@ function App() {
                 </Router>
               </AdminProvider>
             </UserProvider>
-          </BusKYCProvider>
         </KYCProvider>
+          </BusKYCProvider>
       </HeaderProvider>
     </div>
   );

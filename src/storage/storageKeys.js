@@ -10,7 +10,7 @@ export const LOCAL_KEYS = {
       userId: "businessUserId",
     },
     shared: {
-      role: "userRole", // to determine which set to read
+      role: "userRole", // Use this for tracking active user type
     },
   };
   

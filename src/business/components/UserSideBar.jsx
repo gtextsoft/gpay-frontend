@@ -12,8 +12,8 @@ function UserSideBar() {
 
   const handleLogout = () => {
     // Clear the user session from localStorage
-    localStorage.removeItem("userUsername");
-    localStorage.removeItem("userAuthToken");
+    sessionStorage.removeItem("individualUsername");
+    sessionStorage.removeItem("individualAuthToken");
 
     // Optionally, show a toast or alert
     toast.success("You have successfully logged out.");

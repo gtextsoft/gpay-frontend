@@ -7,7 +7,7 @@ const AddTransaction = ({ transactionData }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [username, setUsername] = useState(
-    localStorage.getItem("userUsername") || ""
+    sessionStorage.getItem("individualUsername") || ""
   );
   const [email, setEmail] = useState("");
   const [method, setMethod] = useState("");
@@ -208,7 +208,7 @@ console.log("Transaction Durations:", transactionData?.durations);
         return;
       }
 
-      const token = localStorage.getItem("authToken");
+      const token = sessionStorage.getItem("authToken");
       const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 

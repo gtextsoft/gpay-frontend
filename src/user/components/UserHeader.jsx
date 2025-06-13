@@ -28,9 +28,9 @@ function UserHeader() {
   // useEffect(() => {
   //   const markNotificationsRead = async () => {
   //     try {
-  //       const token = localStorage.getItem("userAuthToken");
-  //       // const currentIdentifier = localStorage.getItem("userUsername");
-  //       const currentIdentifier = username || localStorage.getItem("userUsername"); // This should hold either username or busName
+  //       const token = sessionStorage.getItem("individualAuthToken");
+  //       // const currentIdentifier = sessionStorage.getItem("individualUsername");
+  //       const currentIdentifier = username || sessionStorage.getItem("individualUsername"); // This should hold either username or busName
 
 
   //       await axios.put(
@@ -48,9 +48,9 @@ function UserHeader() {
 
   // const fetchNotifications = async () => {
   //   try {
-  //     const token = localStorage.getItem("userAuthToken");
-  //     // const currentIdentifier = username || localStorage.getItem("userUsername");
-  //     const currentIdentifier = username || localStorage.getItem("userUsername"); // This should hold either username or busName
+  //     const token = sessionStorage.getItem("individualAuthToken");
+  //     // const currentIdentifier = username || sessionStorage.getItem("individualUsername");
+  //     const currentIdentifier = username || sessionStorage.getItem("individualUsername"); // This should hold either username or busName
 
 
   //     const response = await axios.get(
@@ -75,7 +75,7 @@ function UserHeader() {
   // }, [username]);
 
   useEffect(() => {
-    const storedProfileImage = localStorage.getItem("profileImage");
+    const storedProfileImage = sessionStorage.getItem("profileImage");
     if (storedProfileImage) {
       setImageSrc(storedProfileImage); // Set the header image to the saved one
     }
@@ -83,13 +83,11 @@ function UserHeader() {
     const fetchUser = async () => {
       setLoading(true);
       try {
-        // let currentIdentifier = username || localStorage.getItem("userUsername");
+        // let currentIdentifier = username || sessionStorage.getItem("individualUsername");
 
         const currentIdentifier =
         username ||
-        localStorage.getItem("userUsername") || // individual
-        localStorage.getItem("busUsername"); // ✅ add this
-
+        sessionStorage.getItem("individualUsername") 
 
         if (!currentIdentifier) {
           toast.error("Username is not available. Redirecting to login...");
@@ -97,11 +95,10 @@ function UserHeader() {
           return;
         }
 
-        // const token = localStorage.getItem("userAuthToken");
-
+        // const token = sessionStorage.getItem("individualAuthToken");
         const token =
-        localStorage.getItem("userAuthToken") || // individual
-        localStorage.getItem("businessAuthToken");
+        sessionStorage.getItem("individualAuthToken")
+
         if (!token) {
           toast.error("Unauthorized access. Please log in.");
           navigate("/login");
@@ -121,7 +118,7 @@ function UserHeader() {
         // Optional: If you want to update imageSrc from API if localStorage image is missing
         if (!storedProfileImage && response.data.userData.profilePictureUrl) {
           setImageSrc(response.data.userData.profilePictureUrl);
-          localStorage.setItem(
+          sessionStorage.setItem(
             "profileImage",
             response.data.userData.profilePictureUrl
           );

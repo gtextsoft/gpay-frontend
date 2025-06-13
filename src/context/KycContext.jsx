@@ -55,10 +55,15 @@ export const KYCProvider = ({ children }) => {
         const res = await fetch(`${API_BASE_URL}/api/kyc/status`, {
           headers: {
             Authorization: `Bearer ${ 
-              localStorage.getItem("userAuthToken") ||
-              localStorage.getItem("businessAuthToken")}`,
+              sessionStorage.getItem("individualAuthToken") }`,
           },
         });
+        //   headers: {
+        //     Authorization: `Bearer ${ 
+        //       sessionStorage.getItem("individualAuthToken") ||
+        //       sessionStorage.getItem("businessAuthToken")}`,
+        //   },
+        // });
 
         if (res.status === 401) {
           console.warn("Unauthorized - token expired");
@@ -102,7 +107,7 @@ export const KYCProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(kycState));
+    sessionStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(kycState));
   }, [kycState]);
 
   const startKyc = () => {

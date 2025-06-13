@@ -9,7 +9,7 @@ const TransactionHistory = ({ userId }) => {
   const [error, setError] = useState("");
   const [selectedTransaction, setSelectedTransaction] = useState(null);
   const [username, setUsername] = useState(
-    localStorage.getItem("userUsername") || ""
+    sessionStorage.getItem("individualUsername") || ""
   );
 
   useEffect(() => {

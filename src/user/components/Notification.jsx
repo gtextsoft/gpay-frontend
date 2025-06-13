@@ -5,8 +5,8 @@ import axios from "axios";
 function Notification() {
   const [notifications, setNotifications] = useState([]);
   const [expandedRow, setExpandedRow] = useState(null);
-  const username = localStorage.getItem("userUsername");
-  const token = localStorage.getItem("userAuthToken");
+  const username = sessionStorage.getItem("individualUsername");
+  const token = sessionStorage.getItem("individualAuthToken");
 
   useEffect(() => {
     const markAllAsRead = async () => {

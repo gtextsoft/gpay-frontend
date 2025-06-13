@@ -9,8 +9,8 @@ export const useNotification = () => useContext(NotificationContext);
 export const NotificationProvider = ({ children }) => {
   const [hasNotifications, setHasNotifications] = useState(false);
   const [notifications, setNotifications] = useState([]);
-  const username = localStorage.getItem("userUsername");
-  const token = localStorage.getItem("userAuthToken");
+  const username = sessionStorage.getItem("individualUsername");
+  const token = sessionStorage.getItem("individualAuthToken");
 
   const fetchNotifications = async () => {
     if (!username || !token) return;
@@ -22,9 +22,9 @@ export const NotificationProvider = ({ children }) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      // const lastReadTime = parseInt(localStorage.getItem("lastReadTime") || "0");
+      // const lastReadTime = parseInt(sessionStorage.getItem("lastReadTime") || "0");
       const lastReadTime = parseInt(
-        localStorage.getItem("lastReadTime") || "0"
+        sessionStorage.getItem("lastReadTime") || "0"
       );
       const hasUnread = response.data.notifications.some(
         (n) => !n.read || new Date(n.createdAt).getTime() > lastReadTime
@@ -48,7 +48,7 @@ export const NotificationProvider = ({ children }) => {
       // Optimistically clear red dot
       setHasNotifications(false);
 
-      localStorage.setItem("lastReadTime", Date.now());
+      sessionStorage.setItem("lastReadTime", Date.now());
 
       // Optional: refetch to confirm (depends on backend reliability)
       fetchNotifications();

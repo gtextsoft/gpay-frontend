@@ -8,7 +8,7 @@ import { useUser } from "../../context/UserContext"; // Make sure you're importi
 function Setting() {
   const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState(
-    localStorage.getItem("profileImage") || ""
+    sessionStorage.getItem("profileImage") || ""
   );
 
   const { username, email } = useUser();
@@ -44,13 +44,13 @@ function Setting() {
 
   const handleSubmit = async () => {
     try {
-      const currentUsername = localStorage.getItem("userUsername");
+      const currentUsername = sessionStorage.getItem("individualUsername");
       if (!currentUsername) {
         toast.error("Username is not available. Please log in again.");
         return;
       }
 
-      const token = localStorage.getItem("userAuthToken");
+      const token = sessionStorage.getItem("individualAuthToken");
       if (!token) {
         toast.error("Unauthorized access. Please log in.");
         return;
@@ -86,8 +86,8 @@ function Setting() {
         profilePictureUrl: response.data.profilePictureUrl || imageSrc, // Keep existing image if not updated
       };
 
-      localStorage.setItem("profileData", JSON.stringify(updatedProfileData));
-      localStorage.setItem(
+      sessionStorage.setItem("profileData", JSON.stringify(updatedProfileData));
+      sessionStorage.setItem(
         "profileImage",
         updatedProfileData.profilePictureUrl
       );
@@ -103,13 +103,13 @@ function Setting() {
 
   useEffect(() => {
     const fetchUserProfile = async () => {
-      const currentUsername = localStorage.getItem("userUsername");
+      const currentUsername = sessionStorage.getItem("individualUsername");
       if (!currentUsername) {
         toast.error("User not found. Please log in.");
         return;
       }
 
-      const token = localStorage.getItem("userAuthToken");
+      const token = sessionStorage.getItem("individualAuthToken");
       console.log("Retrieved Token:", token); // Debugging
 
       if (!token) {
@@ -134,11 +134,11 @@ function Setting() {
             response.data.data.profilePictureUrl
           }?t=${new Date().getTime()}`; // Prevent caching
           setImageSrc(updatedImageUrl);
-          localStorage.setItem("profileImage", updatedImageUrl);
+          sessionStorage.setItem("profileImage", updatedImageUrl);
         }
 
         // Save fresh data in localStorage
-        localStorage.setItem("profileData", JSON.stringify(response.data.data));
+        sessionStorage.setItem("profileData", JSON.stringify(response.data.data));
       } catch (error) {
         console.error("Error fetching profile:", error);
         toast.error("Failed to fetch profile data.");

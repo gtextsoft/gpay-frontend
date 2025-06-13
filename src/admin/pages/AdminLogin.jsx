@@ -32,8 +32,8 @@ function AdminLogin() {
      
 //       if (token && adminData.username) {
 //         // Save token and username in localStorage
-//         localStorage.setItem("adminAuthToken", token);
-//         localStorage.setItem("adminUsername", adminData.username);
+//         sessionStorage.setItem("adminAuthToken", token);
+//         sessionStorage.setItem("adminUsername", adminData.username);
 
 //         // Update context
 //         setUsername(adminData.username);
@@ -65,11 +65,11 @@ function AdminLogin() {
 
       if (token && adminData?.username && adminData?._id) {
         // Store credentials in localStorage
-        localStorage.setItem("adminAuthToken", token);
-        localStorage.setItem("adminUsername", adminData.username);
-        localStorage.setItem("adminId", adminData._id); // Optional
-        localStorage.setItem("userRole", "admin"); // For role-based routing
-        localStorage.setItem("adminEmail", adminData.email);
+        sessionStorage.setItem("adminAuthToken", token);
+        sessionStorage.setItem("adminUsername", adminData.username);
+        sessionStorage.setItem("adminId", adminData._id); // Optional
+        sessionStorage.setItem("userRole", "admin"); // For role-based routing
+        sessionStorage.setItem("adminEmail", adminData.email);
 
         // Set context
         setUsername(adminData.username);

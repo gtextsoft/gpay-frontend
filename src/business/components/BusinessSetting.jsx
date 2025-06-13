@@ -8,7 +8,7 @@ import { useUser } from "../../context/UserContext"; // Make sure you're importi
 function BusinessSetting() {
   const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState(
-    localStorage.getItem("profileImage") || ""
+    sessionStorage.getItem("profileImage") || ""
   );
 
   const { username, email } = useUser();
@@ -44,21 +44,21 @@ function BusinessSetting() {
 
   const handleSubmit = async () => {
     try {
-      // const currentUsername = localStorage.getItem("userUsername");
+      // const currentUsername = sessionStorage.getItem("individualUsername");
       // const currentUsername =
-      // localStorage.getItem("userUsername") || 
-      // localStorage.getItem("busUsername");
-      const currentUsername = username || localStorage.getItem("busUsername") || localStorage.getItem("userUsername");
+      // sessionStorage.getItem("individualUsername") || 
+      // sessionStorage.getItem("busUsername");
+      const currentUsername = username || sessionStorage.getItem("busUsername") || sessionStorage.getItem("individualUsername");
 
       if (!currentUsername) {
         toast.error("Username is not available. Please log in again.");
         return;
       }
 
-      // const token = localStorage.getItem("userAuthToken");
+      // const token = sessionStorage.getItem("individualAuthToken");
       const token =
-      localStorage.getItem("userAuthToken") || // individual
-      localStorage.getItem("businessAuthToken");
+      sessionStorage.getItem("individualAuthToken") || // individual
+      sessionStorage.getItem("businessAuthToken");
       if (!token) {
         toast.error("Unauthorized access. Please log in.");
         return;
@@ -67,7 +67,7 @@ function BusinessSetting() {
       const data = new FormData();
 
       Object.keys(formData).forEach((key) => {
-        if (key === "profilePicture") {
+        if (key === "profileBusPicture") {
           // Only append the image if a new file is selected
           if (formData[key] instanceof File) {
             data.append(key, formData[key]);
@@ -94,9 +94,9 @@ function BusinessSetting() {
         profilePictureUrl: response.data.profilePictureUrl || imageSrc, // Keep existing image if not updated
       };
 
-      localStorage.setItem("profileData", JSON.stringify(updatedProfileData));
-      localStorage.setItem(
-        "profileImage",
+      sessionStorage.setItem("profileData", JSON.stringify(updatedProfileData));
+      sessionStorage.setItem(
+        "profileBusImage",
         updatedProfileData.profilePictureUrl
       );
 
@@ -111,20 +111,20 @@ function BusinessSetting() {
 
   useEffect(() => {
     const fetchUserProfile = async () => {
-      // const currentUsername = localStorage.getItem("userUsername");
+      // const currentUsername = sessionStorage.getItem("individualUsername");
       const currentUsername =
           username ||
-          localStorage.getItem("userUsername") || // individual
-          localStorage.getItem("busUsername"); 
+          sessionStorage.getItem("individualUsername") || // individual
+          sessionStorage.getItem("busUsername"); 
       if (!currentUsername) {
         toast.error("User not found. Please log in.");
         return;
       }
 
-      // const token = localStorage.getItem("userAuthToken");
+      // const token = sessionStorage.getItem("individualAuthToken");
       const token =
-      localStorage.getItem("userAuthToken") || // individual
-      localStorage.getItem("businessAuthToken");
+      sessionStorage.getItem("individualAuthToken") || // individual
+      sessionStorage.getItem("businessAuthToken");
       console.log("Retrieved Token:", token); // Debugging
 
       if (!token) {
@@ -149,11 +149,11 @@ function BusinessSetting() {
             response.data.data.profilePictureUrl
           }?t=${new Date().getTime()}`; // Prevent caching
           setImageSrc(updatedImageUrl);
-          localStorage.setItem("profileImage", updatedImageUrl);
+          sessionStorage.setItem("profileBusImage", updatedImageUrl);
         }
 
         // Save fresh data in localStorage
-        localStorage.setItem("profileData", JSON.stringify(response.data.data));
+        sessionStorage.setItem("profileData", JSON.stringify(response.data.data));
       } catch (error) {
         console.error("Error fetching profile:", error);
         toast.error("Failed to fetch profile data.");

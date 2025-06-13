@@ -50,10 +50,10 @@ function Login() {
 
         // Save to localStorage
 
-        localStorage.setItem(keys.username, nameToUse);
-        localStorage.setItem(keys.authToken, token);
-        localStorage.setItem(keys.userId, userData._id);
-        localStorage.setItem(LOCAL_KEYS.shared.role, role);
+        sessionStorage.setItem(keys.username, nameToUse);
+        sessionStorage.setItem(keys.authToken, token);
+        sessionStorage.setItem(keys.userId, userData._id);
+        sessionStorage.setItem(LOCAL_KEYS.shared.role, role);
 
         // Update context
         setUsername(nameToUse);
@@ -89,9 +89,9 @@ function Login() {
       }
       // if (token && userData?.busName && userData?.role) {
       //   // Save to localStorage
-      //   localStorage.setItem("userAuthToken", token);
-      //   localStorage.setItem("userUsername", userData.busName);
-      //   localStorage.setItem("userRole", userData.role);
+      //   sessionStorage.setItem("individualAuthToken", token);
+      //   sessionStorage.setItem("individualUsername", userData.busName);
+      //   sessionStorage.setItem("userRole", userData.role);
 
       //   // Update context
       //   setUsername(userData.busName);

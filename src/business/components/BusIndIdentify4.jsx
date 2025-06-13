@@ -60,10 +60,10 @@ function BusIndIdentify4() {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-      // const token = localStorage.getItem("userAuthToken");
+      // const token = sessionStorage.getItem("individualAuthToken");
       const token =
-      localStorage.getItem("userAuthToken") || // individual
-      localStorage.getItem("businessAuthToken");
+      sessionStorage.getItem("individualAuthToken") || // individual
+      sessionStorage.getItem("businessAuthToken");
 
       updateStepData("step4", values);
 

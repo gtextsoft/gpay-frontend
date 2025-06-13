@@ -51,10 +51,9 @@ export const BusKYCProvider = ({ children }) => {
 
         const res = await fetch(`${API_BASE_URL}/api/kyc/bus/status`, {
           headers: {
-            // Authorization: `Bearer ${localStorage.getItem("userAuthToken")}`,
+            // Authorization: `Bearer ${sessionStorage.getItem("individualAuthToken")}`,
             Authorization: `Bearer ${ 
-              localStorage.getItem("userAuthToken") || // individual
-              localStorage.getItem("businessAuthToken")}`,
+              sessionStorage.getItem("businessAuthToken")}`,
           },
         });
 
@@ -100,12 +99,12 @@ export const BusKYCProvider = ({ children }) => {
   }, []);
 
 //   useEffect(() => {
-//     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(kycState));
+//     sessionStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(kycState));
 //   }, [kycState]);
 
 useEffect(() => {
     const timeout = setTimeout(() => {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(kycState));
+      sessionStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(kycState));
     }, 300);
   
     return () => clearTimeout(timeout);

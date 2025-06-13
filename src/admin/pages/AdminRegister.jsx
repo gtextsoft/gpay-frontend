@@ -43,7 +43,7 @@ function Register() {
 
   
   useEffect(() => {
-    const storedUsername = localStorage.getItem("adminUsername");
+    const storedUsername = sessionStorage.getItem("adminUsername");
     if (storedUsername) {
       setUsername(storedUsername);
     }
@@ -70,7 +70,7 @@ function Register() {
       );
 
       const { email } = response.data;
-      localStorage.setItem("adminEmail", email);
+      sessionStorage.setItem("adminEmail", email);
       console.log("Saved email to localStorage:", email);
 
       console.log(response.data);

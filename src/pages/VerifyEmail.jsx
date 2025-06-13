@@ -13,7 +13,7 @@
 //   const handleVerification = async () => {
 //     setLoading(true);
 //     try {
-//       const email = localStorage.getItem("userEmail");
+//       const email = sessionStorage.getItem("userEmail");
 
 //       if (!email || !verificationCode) {
 //         throw new Error("Missing email or verification token.");
@@ -140,7 +140,7 @@ function VerifyEmail() {
   // const handleVerification = async () => {
   //   setLoading(true);
   //   try {
-  //     const email = localStorage.getItem("userEmail");
+  //     const email = sessionStorage.getItem("userEmail");
 
   //     if (!email || !verificationCode) {
   //       throw new Error("Missing email or verification token.");
@@ -172,7 +172,7 @@ function VerifyEmail() {
   const handleVerification = async () => {
     setLoading(true);
     try {
-      const email = localStorage.getItem("userEmail");
+      const email = sessionStorage.getItem("userEmail");
   
       if (!email || !verificationCode) {
         throw new Error("Missing email or verification token.");

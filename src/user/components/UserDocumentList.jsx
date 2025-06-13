@@ -11,8 +11,8 @@ function UserDocumentList() {
   const [loading, setLoading] = useState(true);
   const [toggleView, setToggleView] = useState("user"); // Default: User-uploaded docs
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  const token = localStorage.getItem("userAuthToken");
-  const username = localStorage.getItem("userUsername"); // Assuming username is stored in localStorage
+  const token = sessionStorage.getItem("individualAuthToken");
+  const username = sessionStorage.getItem("individualUsername"); // Assuming username is stored in localStorage
 
   // Fetch user's documents
   useEffect(() => {

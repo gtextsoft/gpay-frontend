@@ -32,8 +32,8 @@ function BusinessDashboard() {
     console.log("BusinessDashboard mounted");
     console.log("Context username:", username);
     console.log("Context userId:", userId);
-    console.log("localStorage role:", localStorage.getItem("userRole"));
-    console.log("localStorage token:", localStorage.getItem("businessAuthToken"));
+    console.log("localStorage role:", sessionStorage.getItem("userRole"));
+    console.log("localStorage token:", sessionStorage.getItem("businessAuthToken"));
   }, []);
   
   const { kycStatus, currentStep, kycRejectionReason, startKyc, isKycLoading } =

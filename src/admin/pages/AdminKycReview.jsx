@@ -12,7 +12,7 @@ function AdminKycReview() {
   const [users, setUsers] = useState([]);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  const token = localStorage.getItem("adminAuthToken");
+  const token = sessionStorage.getItem("adminAuthToken");
 
   // Fetch all users for both individual and business
   useEffect(() => {
