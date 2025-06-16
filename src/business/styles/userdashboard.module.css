@@ -125,7 +125,9 @@
   border-radius: 0.5rem;
 }
 
-
+.age{
+  font-weight: 600;
+}
 
 .initiate {
   background-color: rgba(110, 0, 0, 1);
@@ -231,6 +233,23 @@
 .newInvest a {
   color: #033349;
   text-decoration: none;
+}
+.plu{
+  /* text-align: right; */
+  display: flex;
+  justify-content: right;
+}
+
+.plus{
+  color: white;
+  background-color: #033349;
+  display: flex;
+  font-size: .8rem;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  width: 20%;
+  
 }
 
 .dollar {
