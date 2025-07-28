@@ -44,7 +44,19 @@ import IndIdentify from "../user/components/IndIdentify.jsx";
 
 import AdminRegister from "../admin/pages/AdminRegister.jsx";
 import AdminLogin from "../admin/pages/AdminLogin.jsx";
+import AdminPassword from "../admin/pages/AdminPasswords.jsx";
 import AdminKycReview from "../admin/pages/AdminKycReview.jsx";
+import AdminSettings from "../admin/pages/AdminSettings.jsx";
+import AdminVerifyEmail from "../admin/components/AdminVerifyEmail";
+import AdminEmailVerify from "../admin/components/AdminEmailVerify";
+import AdminForgotPassword from "../admin/components/AdminForgotPassword";
+import AdminEmailSuccess from "../admin/components/AdminEmailSuccess";
+import AdminUpdatePassword from "../admin/components/AdminUpdatePassword";
+import AdminNotification from "../admin/pages/AdminNotification.jsx";
+import AdminTransactions from "../admin/pages/AdminTransactions.jsx";
+import AdminBusinesses from "../admin/pages/AdminBusinesses.jsx";
+import AdminIndividuals from "../admin/pages/AdminIndividuals.jsx";
+import AdminDashboard from "../admin/pages/AdminDashboard.jsx";
 
 function Pages() {
   return (
@@ -87,6 +99,7 @@ function Pages() {
           <Route path="/user/setting" element={<UserSettings />} />
           <Route path="/user/password" element={<UserPassword />} />
 
+{/* Business Route */}
           <Route
             path="/user/business-dashboard"
             element={<BusinessDashboard />}
@@ -123,6 +136,19 @@ function Pages() {
           <Route path="/admin/kyc" element={<AdminKycReview />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/register" element={<AdminRegister />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/individuals" element={<AdminIndividuals />} />
+          <Route path="/admin/businesses" element={<AdminBusinesses />} />
+          <Route path="/admin/transactions" element={<AdminTransactions />} />
+          <Route path="/admin/notification" element={<AdminNotification />} />
+          <Route path="/admin/settings" element={<AdminSettings />} />
+          
+          <Route path="/admin/password" element={<AdminPassword />} />
+            <Route path="/admin/email-success" element={<AdminEmailSuccess />}/>
+            <Route path="/admin/forgot-password" element={<AdminForgotPassword />}/>
+            <Route path="/admin/email-verify" element={<AdminEmailVerify />} />
+            <Route path="/admin/verify-email" element={<AdminVerifyEmail />} />
+            <Route path="/admin/reset-password" element={<AdminUpdatePassword />} />
         </Routes>
       </UserProvider>
     </div>

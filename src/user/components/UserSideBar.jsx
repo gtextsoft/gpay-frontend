@@ -11,7 +11,7 @@ function UserSideBar() {
   };
 
   const handleLogout = () => {
-    // Clear the user session from localStorage
+    // Clear the user session from sessionStorage
     sessionStorage.removeItem("individualUsername");
     sessionStorage.removeItem("individualAuthToken");
 
@@ -35,9 +35,9 @@ function UserSideBar() {
                     <li className={style.navLi} ><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/dashboard-individual' onClick={() => handleLinkClick("Dashboard")}><span class="material-symbols-outlined">grid_view</span><span>Dashboard</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/wallet' onClick={() => handleLinkClick("Wallet")}><span class="material-symbols-outlined">account_balance_wallet</span> <span>Wallet</span></NavLink></li>
                     {/* <li className={style.navLi}><NavLink   className={({ isActive }) => (isActive ? style.active : "")} to='/user/fund-transfer' onClick={() => handleLinkClick("Fund Transfer")}><span class="material-symbols-outlined">apartment</span> <span>Fund Transfer</span></NavLink></li> */}
-                    <li className={style.navLi}><NavLink   className={({ isActive }) => (isActive ? style.active : "")} to='/user/savings' onClick={() => handleLinkClick("Savings")}><span class="material-symbols-outlined">monitoring</span> <span>Savings</span></NavLink></li>
+                    {/* <li className={style.navLi}><NavLink   className={({ isActive }) => (isActive ? style.active : "")} to='/user/savings' onClick={() => handleLinkClick("Savings")}><span class="material-symbols-outlined">monitoring</span> <span>Savings</span></NavLink></li> */}
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/transactions' onClick={() => handleLinkClick("Transaction")}><span class="material-symbols-outlined">business_center</span> <span>Transactions</span></NavLink></li>
-                    <li className={style.navLi}><NavLink   className={({ isActive }) => (isActive ? style.active : "")} to='/user/invoice' onClick={() => handleLinkClick("Invoice")}><span class="material-symbols-outlined">monitoring</span> <span>Invoice</span></NavLink></li>
+                    {/* <li className={style.navLi}><NavLink   className={({ isActive }) => (isActive ? style.active : "")} to='/user/invoice' onClick={() => handleLinkClick("Invoice")}><span class="material-symbols-outlined">monitoring</span> <span>Invoice</span></NavLink></li> */}
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/document' onClick={() => handleLinkClick("Document")}><span class="material-symbols-outlined">sticky_note_2</span> <span>Documents</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/notification' onClick={() => handleLinkClick("Notification")}><span class="material-symbols-outlined">notifications</span> <span>Notification</span></NavLink></li>
                     {/* <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/news'><span class="material-symbols-outlined">rss_feed</span> <span>News</span></NavLink></li> */}

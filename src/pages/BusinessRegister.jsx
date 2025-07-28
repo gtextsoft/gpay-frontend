@@ -78,9 +78,9 @@ function BusinessRegister() {
       const { verificationToken, email } = response.data;
       sessionStorage.setItem("VerifyToken", verificationToken);
       sessionStorage.setItem("userEmail", email);
-      console.log("Saved email to localStorage:", email);
+      console.log("Saved email to sessionStorage:", email);
       console.log(
-        "Saved verification token to localStorage:",
+        "Saved verification token to sessionStorage:",
         verificationToken
       );
 

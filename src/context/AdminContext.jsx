@@ -4,15 +4,15 @@ export const AdminContext = createContext();
 
 export const AdminProvider = ({ children }) => {
   const [username, setUsername] = useState(() => {
-    // Check if the username is saved in localStorage
+    // Check if the username is saved in sessionStorage
     const savedUsername = sessionStorage.getItem("adminUsername");
     return savedUsername || "";
   });
 
-  // Sync username to localStorage whenever it changes
+  // Sync username to sessionStorage whenever it changes
   useEffect(() => {
     if (username) {
-      sessionStorage.setItem("adminUsername", username);  // Save username to localStorage
+      sessionStorage.setItem("adminUsername", username);  // Save username to sessionStorage
     }
   }, [username]);
 

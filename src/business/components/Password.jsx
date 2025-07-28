@@ -15,7 +15,7 @@ function Password() {
     navigate("/user/business-password"); // Navigate to the '/compound' page
   };
   const [email, setEmail] = useState("");
-  const [ setLoading] = useState(false); // State to manage loading
+  const [loading,  setLoading] = useState(false); // State to manage loading
 
   const handleSubmit = async (e) => {
     e.preventDefault();

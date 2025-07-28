@@ -17,7 +17,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 // import { useBusKYC } from "../../context/BusKycContext";
 
-function SubAccountForm() {
+function SubAccountForm({ onSuccess, onCancel }) {
   const { userId } = useUser();
 
   if (!userId) return <p>Loading user info...</p>;
@@ -29,7 +29,6 @@ function SubAccountForm() {
     label: ind,
     value: ind,
   }));
-
 
   function AutoSetIdLevel() {
     const { values, setFieldValue } = useFormikContext();
@@ -123,8 +122,7 @@ function SubAccountForm() {
     postal: Yup.number()
       .typeError("Must be a number")
       .required("Postal Code is required"),
-      subPass: Yup.string().required("Business Password is required"),
-
+    subPass: Yup.string().required("Business Password is required"),
   });
 
   const initialValues = {
@@ -152,8 +150,8 @@ function SubAccountForm() {
     try {
       const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
       const token = sessionStorage.getItem("businessAuthToken");
-     console.log(token) 
-     
+      console.log(token);
+
       const formData = new FormData();
 
       Object.entries(values).forEach(([key, value]) => {
@@ -162,7 +160,7 @@ function SubAccountForm() {
         }
       });
       formData.append("proofOfAddress", values.proofOfAddress);
-    //   mData.append("proofOfAddress", values.proofOfAddress);
+      //   mData.append("proofOfAddress", values.proofOfAddress);
 
       await axios.post(`${API_BASE_URL}/api/kyc/bus/sub/submit`, formData, {
         headers: {
@@ -170,6 +168,8 @@ function SubAccountForm() {
           "Content-Type": "multipart/form-data",
         },
       });
+      toast.success("Business created successfully!");
+      onSuccess();
     } catch (error) {
       toast.error("Submission failed. Please try again.");
     } finally {
@@ -557,22 +557,22 @@ function SubAccountForm() {
                 </div>
 
                 <div className={style.textInputs}>
-                    <p className={style.label}>Password</p>
-                    <div className={style.inputP}>
-                      <Field
-                        type="text"
-                        name="subPass"
-                        component={TextInput}
-                        placeholder="Create Your Business Password"
-                        ariaLabel="Create Your Business Password"
-                      />
-                    </div>
-                    <ErrorMessage
+                  <p className={style.label}>Password</p>
+                  <div className={style.inputP}>
+                    <Field
+                      type="text"
                       name="subPass"
-                      component="div"
-                      style={{ color: "red" }}
+                      component={TextInput}
+                      placeholder="Create Your Business Password"
+                      ariaLabel="Create Your Business Password"
                     />
                   </div>
+                  <ErrorMessage
+                    name="subPass"
+                    component="div"
+                    style={{ color: "red" }}
+                  />
+                </div>
 
                 <div className={style.btn}>
                   <button
@@ -595,7 +595,9 @@ function SubAccountForm() {
                       </div>
                     )}
                   </button>
+
                 </div>
+                  <button onClick={onCancel}>Cancel</button>
               </Form>
             );
           }}

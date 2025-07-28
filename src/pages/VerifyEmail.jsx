@@ -23,7 +23,7 @@
 //       const response = await axios.post(
 //         `${API_BASE_URL}/user/verify-email`,
 //         // "http://localhost:4000/user/verify-email",
-//         { email, verificationCode } // Use the state value, not localStorage
+//         { email, verificationCode } // Use the state value, not sessionStorage
 //       );
 
 //       toast.success("Email verified successfully!", { autoClose: 2000 });
@@ -149,7 +149,7 @@ function VerifyEmail() {
   //     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   //     const response = await axios.post(
   //       `${API_BASE_URL}/user/verify-email`,
-  //       { email, verificationCode } // Use the state value, not localStorage
+  //       { email, verificationCode } // Use the state value, not sessionStorage
   //     );
 
   //     toast.success("Email verified successfully!", { autoClose: 2000 });

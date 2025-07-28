@@ -66,7 +66,7 @@ function BusinessHeader() {
 
         setUserData(response.data.userData);
 
-        // Optional: If you want to update imageSrc from API if localStorage image is missing
+        // Optional: If you want to update imageSrc from API if sessionStorage image is missing
         if (!storedProfileImage && response.data.userData.profilePictureUrl) {
           setImageSrc(response.data.userData.profilePictureUrl);
           sessionStorage.setItem(

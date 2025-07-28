@@ -2,17 +2,20 @@ import React, { useEffect, useState } from "react";
 import style from "../styles/usernotification.module.css";
 import axios from "axios";
 
-function Notification() {
+function BusinessNotification() {
   const [notifications, setNotifications] = useState([]);
   const [expandedRow, setExpandedRow] = useState(null);
-  const username = sessionStorage.getItem("individualUsername");
-  const token = sessionStorage.getItem("individualAuthToken");
+  // const username = sessionStorage.getItem("businessUsername");
+  const email = sessionStorage.getItem("businessEmail");
+  const token = sessionStorage.getItem("businessAuthToken");
 
   useEffect(() => {
     const markAllAsRead = async () => {
       try {
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+        
         await axios.put(
-          `${process.env.REACT_APP_API_BASE_URL}/api/notification/${username}/mark-read`,
+          `${API_BASE_URL}/api/notification/${email}/mark-read`,
           {},
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -25,14 +28,16 @@ function Notification() {
     };
   
     markAllAsRead();
-  }, [username]);
+  }, [email]);
 
   
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+        
         const response = await axios.get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/notification/${username}`,
+          `${API_BASE_URL}/api/notification/${email}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -44,7 +49,7 @@ function Notification() {
     };
 
     fetchNotifications();
-  }, [username]);
+  }, [email]);
 
   return (
     <div>
@@ -99,5 +104,5 @@ function Notification() {
   );
 }
 
-export default Notification;
+export default BusinessNotification;
 

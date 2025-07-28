@@ -4,7 +4,7 @@ import style from "../styles/identify.module.css";
 import "react-toastify/dist/ReactToastify.css";
 import { useBusKYC } from "../../context/BusKycContext";
 
-function SubAccountSuccess() {
+function SubAccountSuccess({onDone}) {
 
 
  
@@ -24,7 +24,7 @@ function SubAccountSuccess() {
             type="button"
             className={style.investConsult3}
             aria-label="Next"
-     
+            onClick={onDone}
           >
             <div className={style.arrowForward}>
               Okay

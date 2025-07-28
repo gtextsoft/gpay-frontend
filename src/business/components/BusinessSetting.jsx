@@ -152,7 +152,7 @@ function BusinessSetting() {
           sessionStorage.setItem("profileBusImage", updatedImageUrl);
         }
 
-        // Save fresh data in localStorage
+        // Save fresh data in sessionStorage
         sessionStorage.setItem("profileData", JSON.stringify(response.data.data));
       } catch (error) {
         console.error("Error fetching profile:", error);

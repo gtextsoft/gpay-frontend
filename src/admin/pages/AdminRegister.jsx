@@ -71,7 +71,7 @@ function Register() {
 
       const { email } = response.data;
       sessionStorage.setItem("adminEmail", email);
-      console.log("Saved email to localStorage:", email);
+      console.log("Saved email to sessionStorage:", email);
 
       console.log(response.data);
       // Save username globally using UserContext
@@ -136,11 +136,11 @@ function Register() {
       />
 
       <div className={style.register}>
-        <img src="./images/authPic.png" alt="auth" className={style.left} />
+        <img src="/images/authPic.png" alt="auth" className={style.left} />
 
         <div className={style.registerForm}>
           <div className={style.Para}>
-            <img src="./images/GPay.png" alt="gpay" />
+            <img src="/images/GPay.png" alt="gpay" />
 
             <div className={style.textPara}>
               <p className={style.cardTitle}>Create Your Gpay Account</p>

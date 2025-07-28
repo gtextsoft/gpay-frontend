@@ -1,91 +1,3 @@
-// // UserContext.jsx
-// import { createContext, useState, useEffect, useContext } from "react";
-
-// const UserContext = createContext(); // ✅ give it a proper name
-
-// export const UserProvider = ({ children }) => {
-//   const [username, setUsername] = useState(() => {
-//     return sessionStorage.getItem("individualUsername") || "";
-//   });
-
-//   const [userId, setUserId] = useState(() => {
-//     return sessionStorage.getItem("userId") || "";
-//   });
-
-//   useEffect(() => {
-//     if (username) {
-//       sessionStorage.setItem("individualUsername", username);
-//     }
-//   }, [username]);
-
-//   useEffect(() => {
-//     if (userId) {
-//       sessionStorage.setItem("userId", userId);
-//     }
-//   }, [userId]);
-
-//   return (
-//     <UserContext.Provider value={{ username, setUsername, userId, setUserId }}>
-//       {children}
-//     </UserContext.Provider>
-//   );
-// };
-
-// // ✅ Export a custom hook for easy usage
-// export const useUser = () => useContext(UserContext);
-
-// UserContext.jsx
-// import { createContext, useState, useEffect, useContext } from "react";
-// import { LOCAL_KEYS } from "../storage/storageKeys";
-
-// const getRoleKeys = () => {
-//   const role = sessionStorage.getItem(LOCAL_KEYS.shared.role);
-//   return LOCAL_KEYS[role] || {};
-// };
-
-// const UserContext = createContext(); // ✅ give it a proper name
-
-// export const UserProvider = ({ children }) => {
-//   const keys = getRoleKeys();
-
-//   const [username, setUsername] = useState(() => {
-//     return sessionStorage.getItem(keys.username) || "";
-//   });
-
-//   const [userId, setUserId] = useState(() => {
-//     return sessionStorage.getItem(keys.userId) || "";
-//   });
-
-//   useEffect(() => {
-//     if (username && keys.username) {
-//       sessionStorage.setItem(keys.username, username);
-//     }
-//   }, [username]);
-
-//   useEffect(() => {
-//     if (userId && keys.userId) {
-//       sessionStorage.setItem(keys.userId, userId);
-//     }
-//   }, [userId]);
-
-//   const clearUser = () => {
-//     Object.values(LOCAL_KEYS.individual).forEach(key => sessionStorage.removeItem(key));
-//     Object.values(LOCAL_KEYS.business).forEach(key => sessionStorage.removeItem(key));
-//     sessionStorage.removeItem(LOCAL_KEYS.shared.role);
-//     setUsername("");
-//     setUserId("");
-//   };
-
-//   return (
-//     <UserContext.Provider value={{ username, setUsername, userId, setUserId, clearUser}}>
-//       {children}
-//     </UserContext.Provider>
-//   );
-// };
-
-// // ✅ Export a custom hook for easy usage
-// export const useUser = () => useContext(UserContext);
-
 import { createContext, useState, useEffect, useContext } from "react";
 import { LOCAL_KEYS } from "../storage/storageKeys";
 
@@ -95,8 +7,15 @@ export const UserProvider = ({ children }) => {
   const role = sessionStorage.getItem(LOCAL_KEYS.shared.role);
   const keys = LOCAL_KEYS[role] || {};
 
-  const [username, setUsername] = useState(() => sessionStorage.getItem(keys.username) || "");
-  const [userId, setUserId] = useState(() => sessionStorage.getItem(keys.userId) || "");
+  const [username, setUsername] = useState(
+    () => sessionStorage.getItem(keys.username) || ""
+  );
+  const [email, setEmail] = useState(
+    () => sessionStorage.getItem(keys.email) || ""
+  );
+  const [userId, setUserId] = useState(
+    () => sessionStorage.getItem(keys.userId) || ""
+  );
 
   useEffect(() => {
     if (username && keys.username) {
@@ -110,17 +29,38 @@ export const UserProvider = ({ children }) => {
     }
   }, [userId, keys.userId]);
 
+  useEffect(() => {
+    if (email && keys.email) {
+      sessionStorage.setItem(keys.email, email);
+    }
+  }, [email, keys.email]);
+
   const clearUser = () => {
     // Remove both individual and business keys
-    Object.values(LOCAL_KEYS.individual).forEach((key) => sessionStorage.removeItem(key));
-    Object.values(LOCAL_KEYS.business).forEach((key) => sessionStorage.removeItem(key));
+    Object.values(LOCAL_KEYS.individual).forEach((key) =>
+      sessionStorage.removeItem(key)
+    );
+    Object.values(LOCAL_KEYS.business).forEach((key) =>
+      sessionStorage.removeItem(key)
+    );
     sessionStorage.removeItem(LOCAL_KEYS.shared.currentRole);
     setUsername("");
     setUserId("");
+    setEmail("");
   };
 
   return (
-    <UserContext.Provider value={{ username, setUsername, userId, setUserId, clearUser }}>
+    <UserContext.Provider
+      value={{
+        username,
+        setUsername,
+        email,
+        setEmail,
+        userId,
+        setUserId,
+        clearUser,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

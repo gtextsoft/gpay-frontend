@@ -21,40 +21,6 @@ function AdminLogin() {
     password: Yup.string().required("Password is required"),
   });
 
-//   const handleSubmit = async (values, { setSubmitting }) => {
-//     try {
-//       const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-//       const response = await axios.post(`${API_BASE_URL}/admin/login`, values);
-//       console.log("API BASE URL:", import.meta.env.VITE_API_BASE_URL);
-
-//       const { adminData, authToken: token } = response.data;
-     
-     
-//       if (token && adminData.username) {
-//         // Save token and username in localStorage
-//         sessionStorage.setItem("adminAuthToken", token);
-//         sessionStorage.setItem("adminUsername", adminData.username);
-
-//         // Update context
-//         setUsername(adminData.username);
-//         toast.success("Login successful!", { autoClose: 2000 });
-
-//         // Navigate to dashboard
-//         setTimeout(() => {
-//           navigate("/admin/kyc");
-//         }, 3000);
-//       } else {
-//         throw new Error("Invalid response from server");
-//       }
-//     } catch (error) {
-//       console.error("Login error:", error);
-//       toast.error("Login failed! Please check your credentials.");
-//     } finally {
-//       setSubmitting(false); // Reset the form submission state
-//     }
-//   };
-
-  // Toggle password visibility
   
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
@@ -64,7 +30,7 @@ function AdminLogin() {
       const { adminData, authToken: token } = response.data;
 
       if (token && adminData?.username && adminData?._id) {
-        // Store credentials in localStorage
+        // Store credentials in sessionStorage
         sessionStorage.setItem("adminAuthToken", token);
         sessionStorage.setItem("adminUsername", adminData.username);
         sessionStorage.setItem("adminId", adminData._id); // Optional
@@ -78,7 +44,7 @@ function AdminLogin() {
 
         // Redirect after a short delay
         setTimeout(() => {
-          navigate("/admin/kyc");
+          navigate("/admin/dashboard");
         }, 2000);
       } else {
         throw new Error("Invalid response from server");
@@ -104,11 +70,11 @@ function AdminLogin() {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
       />
       <div className={style.register}>
-        <img src="./images/authPic.png" alt="auth" className={style.left} />
+        <img src="/images/authPic.png" alt="auth" className={style.left} />
 
         <div className={style.registerForm}>
           <div className={style.Para}>
-            <img src="./images/GPay.png" alt="gpay" />
+            <img src="/images/GPay.png" alt="gpay" />
 
             <p className={style.cardTitle}>Welcome Back</p>
             <p>Log in to access your personalized investment dashboard.</p>

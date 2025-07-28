@@ -34,8 +34,8 @@ function UserDashboard() {
     console.log("IndividualDashboard mounted");
     console.log("Context username:", username);
     console.log("Context userId:", userId);
-    console.log("localStorage role:", sessionStorage.getItem("userRole"));
-    console.log("localStorage token:", sessionStorage.getItem("individualAuthToken"));
+    console.log("sessionStorage role:", sessionStorage.getItem("userRole"));
+    console.log("sessionStorage token:", sessionStorage.getItem("individualAuthToken"));
   }, []);
 
   const { kycStatus, currentStep, kycRejectionReason, startKyc, isKycLoading } =

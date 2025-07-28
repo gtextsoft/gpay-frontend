@@ -14,7 +14,7 @@ import style from "../styles/register.module.css";
 import { LOCAL_KEYS } from "../storage/storageKeys";
 
 function Login() {
-  const { setUsername, setUserId } = useUser(); // Access UserContext
+  const { setUsername, setUserId, setEmail } = useUser(); // Access UserContext
   const [showPassword, setShowPassword] = useState(false); // Password visibility toggle
 
   const navigate = useNavigate();
@@ -37,25 +37,22 @@ function Login() {
         const role = userData.role; // "individual" or "business"
         const keys = LOCAL_KEYS[role];
 
-        // if (role === "individual") {
-        //   navigate("/user/dashboard-individual");
-        // } else if (role === "business") {
-        //   navigate("/user/business-dashboard");
-        // } else {
-        //   toast.error("Invalid user role. Please contact support.");
-        // }
 
         const nameToUse =
           userData.role === "business" ? userData.busName : userData.username;
 
-        // Save to localStorage
+          const emailToUse = userData.email;
+
+        // Save to sessionStorage
 
         sessionStorage.setItem(keys.username, nameToUse);
+        sessionStorage.setItem(keys.email, emailToUse);
         sessionStorage.setItem(keys.authToken, token);
         sessionStorage.setItem(keys.userId, userData._id);
         sessionStorage.setItem(LOCAL_KEYS.shared.role, role);
 
         // Update context
+        setEmail(emailToUse)
         setUsername(nameToUse);
         setUserId(userData._id);
 
@@ -63,7 +60,7 @@ function Login() {
         console.log("Logged in userData:", userData);
 
         // Redirect by role
-        // Delay redirect to ensure context + localStorage update
+        // Delay redirect to ensure context + sessionStorage update
         setTimeout(() => {
           if (role === "individual") {
             navigate("/user/dashboard-individual");
@@ -88,7 +85,7 @@ function Login() {
         throw new Error("Invalid response from server");
       }
       // if (token && userData?.busName && userData?.role) {
-      //   // Save to localStorage
+      //   // Save to sessionStorage
       //   sessionStorage.setItem("individualAuthToken", token);
       //   sessionStorage.setItem("individualUsername", userData.busName);
       //   sessionStorage.setItem("userRole", userData.role);

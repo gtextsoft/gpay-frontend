@@ -11,7 +11,7 @@ function UserSideBar() {
   };
 
   const handleLogout = () => {
-    // Clear the user session from localStorage
+    // Clear the user session from sessionStorage
     sessionStorage.removeItem("individualUsername");
     sessionStorage.removeItem("individualAuthToken");
 
